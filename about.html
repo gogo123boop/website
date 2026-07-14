@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>探索濟明 - Zencare TCM 济明中医</title>
+<meta name="description" content="了解济明中医的品牌故事、愿景与使命。调和身心，济明相伴。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/logo-seal.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ===== 探索濟明页面专属样式 ===== */
+
+/* ===== 全幅形象视觉 ===== */
+.about-hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  overflow: hidden;
+}
+.about-hero .hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.about-hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10,15,63,0.5), rgba(10,15,63,0.15));
+  z-index: 1;
+}
+.about-hero .hero-text {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* 左侧竖排文字 - 关于济明 */
+.about-hero .hero-left {
+  writing-mode: vertical-rl;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.3em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  opacity: 0.9;
+  padding: 0 10px;
+  border-left: 2px solid rgba(255,255,255,0.2);
+  padding-left: 16px;
+}
+/* 右侧竖排文字 - 调和身心 济明相伴 */
+.about-hero .hero-right {
+  writing-mode: vertical-rl;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.4em;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  opacity: 0.8;
+  padding: 0 10px;
+  border-right: 2px solid rgba(255,255,255,0.15);
+  padding-right: 16px;
+}
+/* 中间装饰线 */
+.about-hero .hero-divider {
+  width: 1px;
+  height: 80px;
+  background: rgba(255,255,255,0.15);
+  align-self: center;
+}
+
+/* 面包屑 */
+.breadcrumb {
+  padding: 20px 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+.breadcrumb a {
+  color: var(--color-ink-soft);
+  transition: color .2s;
+}
+.breadcrumb a:hover {
+  color: var(--color-brick);
+}
+.breadcrumb span {
+  margin: 0 8px;
+  opacity: 0.4;
+}
+
+/* ===== 品牌故事 — 信笺设计 ===== */
+.brand-story {
+  padding: 80px 0 60px;
+  background: var(--color-card);
+}
+.brand-story-inner {
+  max-width: 740px;
+  margin: 0 auto;
+}
+/* 信封外框 */
+.brand-story .letter-wrap {
+  position: relative;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  padding: 56px 60px 48px;
+  box-shadow: 0 4px 24px rgba(10,15,63,0.06);
+}
+/* 信封装饰线 — 模拟火漆印章 */
+.brand-story .letter-wrap::before {
+  content: '';
+  position: absolute;
+  top: -1px; left: 40px; right: 40px;
+  height: 3px;
+  background: var(--color-brick);
+  opacity: 0.5;
+}
+/* 火漆印章圆点 */
+.brand-story .letter-seal {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-brick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 11px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  box-shadow: 0 2px 8px rgba(118,21,24,0.25);
+}
+/* 信头 */
+.brand-story .letter-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-line);
+}
+.brand-story .letter-header .eyebrow {
+  color: var(--color-brick);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  margin-bottom: 10px;
+}
+.brand-story .letter-header h2 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+  letter-spacing: 0.08em;
+}
+/* 称呼 */
+.brand-story .letter-greeting {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--color-ink);
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+/* 正文 */
+.brand-story .letter-body p {
+  font-size: 15px;
+  color: var(--color-ink-soft);
+  line-height: 2;
+  margin-bottom: 18px;
+  text-indent: 2em;
+}
+.brand-story .letter-body p:last-child {
+  margin-bottom: 0;
+}
+/* 落款 */
+
+.brand-story .letter-signoff {
+
+  margin-top: 36px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-line);
+  text-align: right;
+}
+.brand-story .letter-signoff .signoff-line1 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.brand-story .letter-signoff .signoff-line2 {
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  margin-top: 4px;
+}
+/* 信纸底部装饰 */
+.brand-story .letter-wrap::after {
+  content: '✦';
+  display: block;
+  text-align: center;
+  color: var(--color-brick);
+  opacity: 0.2;
+  font-size: 14px;
+  margin-top: 32px;
+  letter-spacing: 8px;
+}
+
+
+/* ===== 品牌理念 ===== */
+.brand-philosophy {
+  padding: 80px 0;
+  background: var(--color-card);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+.philosophy-card {
+  text-align: center;
+  padding: 40px 28px;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  transition: all .35s ease;
+}
+.philosophy-card:hover {
+  border-color: var(--color-brick);
+  box-shadow: 0 8px 28px rgba(118,21,24,0.08);
+  transform: translateY(-3px);
+}
+.philosophy-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-brick);
+  margin: 0 auto 20px;
+}
+.philosophy-icon svg { width: 100%; height: 100%; }
+.philosophy-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+}
+.philosophy-card .phil-en {
+  font-size: 11px;
+  color: var(--color-brick);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.philosophy-card p {
+  font-size: 14.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ===== 特色优势 ===== */
+
+.brand-features {
+  padding: 80px 0;
+  background: var(--color-card);
+  border-top: 1px solid var(--color-line);
+}
+.features-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.features-inner .eyebrow {
+  text-align: center;
+  color: var(--color-brick);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  margin-bottom: 16px;
+}
+.features-inner .section-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.features-inner .title-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--color-brick);
+  margin: 0 auto 48px;
+  opacity: 0.5;
+}
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.feature-card {
+  display: flex;
+  gap: 20px;
+  padding: 28px;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  transition: all .3s ease;
+}
+.feature-card:hover {
+  border-color: var(--color-brick);
+  box-shadow: 0 4px 16px rgba(118,21,24,0.06);
+}
+.feature-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-brick);
+  opacity: 0.3;
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 36px;
+}
+.feature-text h4 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+}
+.feature-text p {
+  font-size: 14px;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ===== CTA ===== */
+.about-cta {
+  padding: 80px 0;
+  background: var(--color-paper);
+  text-align: center;
+}
+.about-cta .section-title {
+  margin-bottom: 12px;
+}
+.about-cta p {
+  color: var(--color-ink-soft);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 960px) {
+  .about-hero { height: 400px; }
+  .about-hero .hero-text { padding: 0 30px; }
+  .about-hero .hero-left { font-size: 22px; }
+  .about-hero .hero-right { font-size: 18px; }
+  .philosophy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 560px) {
+  .about-hero { height: 320px; }
+  .about-hero .hero-text { padding: 0 20px; }
+  .about-hero .hero-left { font-size: 18px; padding-left: 10px; }
+  .about-hero .hero-right { font-size: 15px; padding-right: 10px; letter-spacing: 0.25em; }
+  .about-hero .hero-divider { height: 50px; }
+  .brand-story { padding: 60px 0 40px; }
+  .brand-story .letter-wrap { padding: 40px 24px 36px; }
+  .brand-story .letter-header h2 { font-size: 22px; }
+  .brand-story .letter-greeting { font-size: 16px; }
+  .brand-story .letter-body p { font-size: 14px; }
+  .philosophy-grid { grid-template-columns: 1fr; }
+  .feature-card { padding: 20px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ========== Header ========== -->
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo-full.png" alt="Zencare TCM 济明中医" class="logo-img">
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#hero">首頁</a>
+      <a href="about.html">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <div class="nav-dropdown">
+        <a href="javascript:void(0)">治療項目</a>
+        <div class="nav-dropdown-menu">
+          <a href="acupuncture.html">针灸正骨伤科</a>
+          <a href="internal.html">内科体质调理</a>
+          <a href="gynecology.html">妇儿科</a>
+        </div>
+      </div>
+      <a href="index.html#hours">門診時間</a>
+      <a href="index.html#contact">聯絡我們</a>
+    </nav>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary header-cta" target="_blank">線上預約</a>
+    <button class="nav-toggle" id="navToggle" aria-label="开启选单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ========== 全幅形象视觉 ========== -->
+<section class="about-hero">
+  <img src="images/aboutzencare.jpeg" alt="关于济明" class="hero-bg">
+  <div class="hero-text">
+    <div class="hero-left">关于济明</div>
+    <div class="hero-divider"></div>
+    <div class="hero-right">调和身心<br>济明相伴</div>
+  </div>
+</section>
+
+<!-- ========== 面包屑 ========== -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">首頁</a>
+    <span>/</span>
+    <span>探索濟明</span>
+  </div>
+</div>
+
+<!-- ========== 品牌故事 — 信笺设计 ========== -->
+<section class="brand-story">
+  <div class="container brand-story-inner">
+    <div class="letter-wrap">
+      <!-- 火漆印章 -->
+      <div class="letter-seal">济</div>
+
+      <!-- 信头 -->
+      <div class="letter-header">
+        <p class="eyebrow">— 致 每一位信赖济明的您 —</p>
+        <h2>一封来自济明团队的信</h2>
+      </div>
+
+      <!-- 称呼 -->
+      <div class="letter-greeting">亲爱的朋友，您好：</div>
+
+      <!-- 正文 -->
+      <div class="letter-body">
+        <p>见字如面。</p>
+        <p>
+          常有朋友问我，「济明」二字有何深意？其实，"济"是渡人以善，"明"是察病于微。这不仅是一个名字，更是我们心底对传统中医智慧的敬意，以及对你健康的挂念。
+        </p>
+        <p>
+          在快节奏的马来西亚，我们发现许多身体的反覆发炎与不适，根源往往离不开脾胃与内在气血的失衡。因此，济明始终坚持「不只治病，更治人」。我们不追求短暂压制表面的疼痛，而是希望从整体出发，帮你把身体的"根本"照顾好，唤醒生命原有的自愈能力。
+        </p>
+        <p>
+          一转眼，我们已陪伴并守护了超过一万名患者。每一次的望闻问切，每一张处方的斟酌，都是我们对"医者仁心"最纯粹的坚守。
+        </p>
+        <p>
+          我们深知，推开诊所大门的那一刻，你交托的是无比珍贵的信任。为了这份信任，我们在此向你承诺：这里的诊疗收费永远公开透明，绝无隐形消费；我们坚持使用100%无类固醇、无西药添加的天然草药；并严格落实环境消毒，坚持使用一次性针具与床单，只为给你最安全、干净的调理环境。
+        </p>
+        <p>
+          不管未来的日子有多忙碌，济明中医都会始终在这里，以专业与温暖，做你最安心的健康后盾。
+        </p>
+        <p>祝 喜乐，安康。</p>
+      </div>
+
+
+
+
+      <!-- 落款 -->
+      <div class="letter-signoff">
+        <div class="signoff-line1">济明中医 全体团队 敬上</div>
+        <div class="signoff-line2">Zencare TCM · 调和身心，济明相伴</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ========== 品牌理念 ========== -->
+<section class="brand-philosophy">
+  <div class="container">
+    <div class="philosophy-grid">
+
+      <div class="philosophy-card">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width="2"/>
+            <path d="M40 24l-6 12-12 6 6-12 12-6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="32" cy="32" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>使命</h3>
+        <p class="phil-en">Mission</p>
+        <p>以传统中医辨证为本，结合现代医学知识，为每一位患者提供专业、安全、有效的诊疗服务，守护社区健康。</p>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M8 32c6-10 15-16 24-16s18 6 24 16c-6 10-15 16-24 16S14 42 8 32z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="32" cy="32" r="7" stroke="currentColor" stroke-width="2"/>
+            <circle cx="32" cy="32" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <h3>愿景</h3>
+        <p class="phil-en">Vision</p>
+        <p>成为马来西亚最受信赖的中医诊疗品牌，让更多人受益于传统中医的智慧，实现身心的全面健康。</p>
+      </div>
+
+      <div class="philosophy-card">
+        <div class="philosophy-icon">
+          <svg viewBox="0 0 64 64" fill="none">
+            <path d="M32 10v40" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 20h36" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 20l-6 14a8 8 0 0012 0z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M50 20l-6 14a8 8 0 0012 0z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M22 54h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>价值观</h3>
+        <p class="phil-en">Values</p>
+        <p>医者仁心、辨证求精、诚信为本、患者至上。以仁心待人，以精术治病，以诚信立身。</p>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ========== 特色优势 ========== -->
+<section class="brand-features">
+  <div class="container features-inner">
+    <p class="eyebrow">WHY CHOOSE US</p>
+    <h2 class="section-title">为什么选择济明</h2>
+    <div class="title-divider"></div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-num">01</span>
+        <div class="feature-text">
+          <h4>辨证论治 · 个性化方案</h4>
+          <p>坚持望闻问切四诊合参，从整体出发找出病根，根据每位患者的体质与生活习惯，量身定制最合适的调理方案。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-num">02</span>
+        <div class="feature-text">
+          <h4>专业医师团队</h4>
+          <p>医师毕业于中国中医院校，同时拥有马来西亚卫生部行医执照，拥有十余年临床经验，兼具传统底蕴与现代视野。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-num">03</span>
+        <div class="feature-text">
+          <h4>纯天然草药 · 费用透明</h4>
+          <p>严格把关药材品质，100%使用纯天然草药，不含类固醇或西药添加物。所有费用公开透明，绝无隐藏收费。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <span class="feature-num">04</span>
+        <div class="feature-text">
+          <h4>就诊环境安全卫生</h4>
+          <p>每次诊疗使用一次性床单与一次性针具，严格消毒流程，提供安全、舒适、干净的就诊环境。</p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ========== CTA ========== -->
+<section class="about-cta">
+  <div class="container">
+    <p class="eyebrow">预约门诊</p>
+    <h2 class="section-title">即刻开始您的健康之旅</h2>
+    <p>欢迎预约看诊，让济明中医团队为您提供专业的诊疗服务。</p>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">線上預約</a>
+  </div>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-seal.png" alt="济明中医 印" class="footer-seal">
+      <span class="logo-cn footer-logo-cn">济明中医</span>
+      <span class="logo-en footer-logo-en">ZENCARE TCM</span>
+      <p class="footer-tagline">调和身心，济明相伴。<br><em>Pusat Perubatan Tradisional Cina</em></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.4l.6-3H14v-1.5c0-.6.4-1.5 1-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.3"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor"/></svg></a>
+        <a href="https://wa.me/60111074210" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.2-.1.3 0 .5.4.7 1.4 1.7 2.1 2.1.2.1.3.1.5 0l.6-.5c.1-.1.3-.2.5-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7-1 .4-2.3 0-3.9-1.2-1.3-1-2.2-2.1-2.7-3.1-.5-1-.5-2 0-2.8z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>快速链接</h4>
+      <a href="about.html">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <a href="acupuncture.html">治療項目</a>
+      <a href="index.html#hours">門診時間</a>
+    </div>
+    <div class="footer-col">
+      <h4>联络资讯</h4>
+      <p>13, Jalan Perdagangan 4, Pusat Perdagangan Bukit Gambir, 84800 Tangkak, Johor</p>
+      <p><a href="tel:+60111074210">+60 11-1074 2100</a></p>
+      <p>周一 9:30AM–1:00PM｜周三至周日 9:30AM–5:30PM｜周二休诊</p>
+    </div>
+    <div class="footer-col">
+      <h4>線上預約</h4>
+      <p class="footer-cta-text">预约门诊，即刻安排您的健康调理。</p>
+      <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">立即预约</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 Zencare TCM 济明中医. All Rights Reserved.</p>
+    <p class="footer-reg">ZENCARE TCM ENTERPRISE 202403064045 (MA0313032-A)</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

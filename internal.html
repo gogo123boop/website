@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>内科体质调理科 - Zencare TCM 济明中医</title>
+<meta name="description" content="济明中医内科体质调理科，坚持望闻问切四诊合参，为您量身定制体质调理方案。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/logo-seal.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+/* ===== 子页面通用样式 ===== */
+
+/* 面包屑 */
+.breadcrumb {
+  padding: 18px 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+.breadcrumb a { color: var(--color-ink-soft); transition: color .2s; }
+.breadcrumb a:hover { color: var(--color-brick); }
+.breadcrumb span { margin: 0 8px; opacity: 0.35; }
+
+/* ===== Banner ===== */
+.subpage-banner {
+  padding: calc(var(--header-h) + 28px) 0 24px;
+  background: linear-gradient(135deg, #0A0F3F 0%, #1A2260 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.subpage-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle at center, rgba(118,21,24,0.15), transparent 70%);
+  z-index: 0;
+}
+.subpage-banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%);
+  z-index: 0;
+}
+.subpage-banner .container { position: relative; z-index: 1; }
+.subpage-banner .eyebrow {
+  color: rgba(235,250,255,0.5);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  margin-bottom: 12px;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.subpage-banner .section-title {
+  color: #fff;
+  font-size: 34px;
+  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.subpage-banner .en-subtitle {
+  color: rgba(235,250,255,0.4);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  font-weight: 400;
+  margin: 0;
+  display: block;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* ===== 把脉视觉区 - 全宽横幅 ===== */
+.pulse-section {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pulse-section .pulse-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.pulse-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10,15,63,0.55), rgba(10,15,63,0.25));
+  z-index: 1;
+}
+.pulse-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 0 20px;
+}
+.pulse-content .section-label {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+.pulse-content h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.pulse-content p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+}
+
+/* ===== 主治项目 - 圆形罗盘布局 ===== */
+.conditions-section {
+  padding: 60px 0 80px;
+  background: #F7F9FC;
+}
+.conditions-section .section-label {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--color-brick);
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+.conditions-section .section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* ===== 圆形罗盘 ===== */
+.compass-wrap {
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+/* 罗盘背景 - 水墨晕染图 */
+.compass-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(118,21,24,0.04), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(118,21,24,0.03), transparent 50%),
+    radial-gradient(circle at center, #faf7f4, #f5f0ec);
+  z-index: 0;
+}
+/* 水墨背景图 - 叠加在底纹之上 */
+.compass-wrap .compass-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  opacity: 0.2;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* 外圈主环 - 浅红色中国风 */
+.compass-wrap::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 96%;
+  height: 96%;
+  border-radius: 50%;
+  border: 2px solid rgba(118,21,24,0.12);
+  box-shadow: 
+    0 0 0 5px rgba(118,21,24,0.04),
+    0 0 0 10px rgba(118,21,24,0.02),
+    inset 0 0 20px rgba(118,21,24,0.03);
+  z-index: 0;
+}
+
+/* 第二圈 - 虚线 */
+.compass-ring-outer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 84%;
+  height: 84%;
+  border-radius: 50%;
+  border: 1px dashed rgba(118,21,24,0.08);
+  z-index: 0;
+}
+
+/* 第三圈 - 细环 */
+.compass-ring-mid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  border: 1px solid rgba(118,21,24,0.05);
+  z-index: 0;
+}
+
+/* 内圈装饰环 */
+.compass-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56%;
+  height: 56%;
+  border-radius: 50%;
+  border: 1px solid rgba(118,21,24,0.06);
+  z-index: 0;
+}
+
+/* 八卦装饰点 - 8个浅红色小点围绕外圈 */
+.compass-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(118,21,24,0.15);
+  z-index: 1;
+  box-shadow: 0 0 6px rgba(118,21,24,0.06);
+}
+
+/* 中心圆 - 深色中国风 */
+.compass-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1A2260, #0A0F3F 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 
+    0 4px 30px rgba(10,15,63,0.4),
+    0 0 0 5px rgba(118,21,24,0.12),
+    0 0 0 10px rgba(118,21,24,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.12);
+  border: 2px solid rgba(255,255,255,0.1);
+}
+/* 中心圆 - 红色光晕 */
+.compass-center::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 40%, rgba(118,21,24,0.1), transparent 60%);
+  z-index: 0;
+}
+/* 中心圆 - 太极阳鱼 */
+.compass-center::after {
+  content: '';
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(255,255,255,0.15), transparent 70%);
+  top: 18%;
+  left: 22%;
+  z-index: 0;
+}
+/* 太极阴点 */
+.compass-center .taiji-yin {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(118,21,24,0.2), transparent 70%);
+  bottom: 20%;
+  right: 25%;
+  z-index: 0;
+}
+.compass-center span {
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+/* 6个罗盘项 - 围绕中心圆形排列 */
+.compass-item {
+  position: absolute;
+  width: 150px;
+  text-align: center;
+  z-index: 3;
+}
+
+/* 连接线（从中心到各点 - 深红色渐变） */
+.compass-line {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5px;
+  height: 36%;
+  background: linear-gradient(to bottom, 
+    rgba(118,21,24,0.2) 0%, 
+    rgba(118,21,24,0.04) 100%
+  );
+  transform-origin: top center;
+  z-index: 1;
+}
+
+/* 圆形图标 - 立体感增强 */
+.compass-icon {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-family: 'Noto Serif SC', 'Times New Roman', serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  transition: all .4s ease;
+  box-shadow: 
+    0 3px 10px rgba(0,0,0,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.5),
+    inset 0 -2px 4px rgba(0,0,0,0.04);
+  border: 2px solid rgba(255,255,255,0.7);
+  position: relative;
+}
+/* 图标发光效果 */
+.compass-icon::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(118,21,24,0.1);
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.compass-item:hover .compass-icon {
+  transform: scale(1.12) translateY(-2px);
+  box-shadow: 
+    0 8px 28px rgba(118,21,24,0.22),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.compass-item:hover .compass-icon::after {
+  opacity: 1;
+}
+
+/* 各分类不同底色 - 中医五藏学说颜色 */
+.compass-icon--lung { background: linear-gradient(145deg, #F5F0EB, #e8ddd0, #F5F0EB); }   /* 肺-金-白 */
+.compass-icon--spleen { background: linear-gradient(145deg, #F5E6C8, #e8d4a8, #F5E6C8); } /* 脾-土-黄 */
+.compass-icon--heart { background: linear-gradient(145deg, #C45050, #a83a3a, #C45050); }  /* 心-火-红 */
+.compass-icon--kidney { background: linear-gradient(145deg, #4A5568, #364151, #4A5568); } /* 肾-水-黑（深蓝灰） */
+.compass-icon--liver { background: linear-gradient(145deg, #7BA88E, #5e8a72, #7BA88E); }  /* 肝-木-绿 */
+.compass-icon--mind { background: linear-gradient(145deg, #B8A0C8, #9e84b0, #B8A0C8); }   /* 身心-紫 */
+
+.compass-item h4 {
+  font-family: var(--font-display);
+  font-size: 33px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 12px;
+  letter-spacing: 0.05em;
+  transition: color .3s ease;
+}
+.compass-item:hover h4 {
+  color: var(--color-brick);
+}
+.compass-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  justify-content: center;
+}
+.compass-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  background: rgba(255,255,255,0.88);
+  border-radius: 3px;
+  font-size: 10.5px;
+  color: var(--color-ink-soft);
+  font-weight: 400;
+  transition: all .3s ease;
+  border: 1px solid var(--color-line);
+}
+.compass-tag:hover {
+  background: rgba(118,21,24,0.08);
+  color: var(--color-brick);
+  border-color: rgba(118,21,24,0.15);
+}
+
+/* ===== 治疗方式区块 ===== */
+.methods-section {
+  padding: 80px 0;
+  background: #fff;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.methods-section .section-label {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--color-brick);
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+.methods-section .section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.method-card {
+  background: #F7F9FC;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 28px 24px;
+  transition: all .4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.method-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-brick), rgba(118,21,24,0.3));
+  opacity: 0;
+  transition: opacity .4s ease;
+}
+.method-card:hover {
+  border-color: var(--color-brick);
+  box-shadow: 0 8px 28px rgba(118,21,24,0.08);
+  transform: translateY(-3px);
+}
+.method-card:hover::before {
+  opacity: 1;
+}
+.method-card .mc-step {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-brick);
+  opacity: 0.25;
+  letter-spacing: 0.05em;
+}
+.method-card .mc-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-brick), var(--color-brick-dark));
+  color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.method-card h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 8px;
+}
+.method-card p {
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ===== 预约区块 ===== */
+.cta-section {
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 400px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-brick), transparent);
+  opacity: 0.3;
+}
+.cta-section .section-title { margin-bottom: 12px; }
+.cta-section p { color: var(--color-ink-soft); font-size: 16px; margin-bottom: 32px; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 960px) {
+  .pulse-section { height: 360px; }
+  .compass-wrap { max-width: 500px; }
+  .compass-item { width: 130px; }
+  .compass-icon { width: 38px; height: 38px; font-size: 14px; }
+  .compass-item h4 { font-size: 14px; }
+  .compass-tag { font-size: 10px; padding: 1px 6px; }
+  .method-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .pulse-section { height: 300px; }
+  .pulse-content h2 { font-size: 24px; }
+  .pulse-content p { font-size: 14px; }
+  .compass-wrap { max-width: 360px; }
+  .compass-item { width: 110px; }
+  .compass-icon { width: 32px; height: 32px; font-size: 12px; }
+  .compass-center { width: 80px; height: 80px; }
+  .compass-center span { font-size: 11px; }
+  .compass-item h4 { font-size: 13px; }
+  .compass-tag { font-size: 9px; padding: 1px 5px; }
+  .subpage-banner { padding: calc(var(--header-h) + 20px) 0 24px; }
+  .subpage-banner .section-title { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== Header ========== -->
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo-full.png" alt="Zencare TCM 济明中医" class="logo-img">
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#hero">首頁</a>
+      <a href="index.html#about">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <div class="nav-dropdown">
+        <a href="javascript:void(0)">治療項目</a>
+        <div class="nav-dropdown-menu">
+          <a href="acupuncture.html">针灸正骨伤科</a>
+          <a href="internal.html">内科体质调理</a>
+          <a href="gynecology.html">妇儿科</a>
+        </div>
+      </div>
+      <a href="index.html#hours">門診時間</a>
+      <a href="index.html#contact">聯絡我們</a>
+    </nav>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary header-cta" target="_blank">線上預約</a>
+    <button class="nav-toggle" id="navToggle" aria-label="开启选单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ========== Banner ========== -->
+<section class="subpage-banner">
+  <div class="container">
+    <p class="eyebrow">诊疗项目</p>
+    <h1 class="section-title">内科体质调理科</h1>
+    <p class="en-subtitle">INTERNAL MEDICINE</p>
+  </div>
+</section>
+
+<!-- ========== 面包屑 ========== -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">首頁</a>
+    <span>/</span>
+    <span>治療項目</span>
+    <span>/</span>
+    <span>内科体质调理科</span>
+  </div>
+</div>
+
+<!-- ========== 把脉视觉区 - 全宽横幅 ========== -->
+<section class="pulse-section">
+  <img src="images/bamai.jpeg" alt="中医把脉" class="pulse-bg">
+  <div class="pulse-content">
+    <p class="section-label">— 四诊合参 —</p>
+    <h2>望闻问切 · 辨证论治</h2>
+    <p>中医内科调理，首重辨证。透过脉诊、舌诊等传统诊断方法，深入辨析体质偏颇与脏腑失衡。<br>济明中医团队以经典中医理论为基础，结合现代生活型态，为您量身打造最合适的调理方案，<br>从根本改善体质，恢复阴阳平衡。</p>
+  </div>
+</section>
+
+<!-- ========== 主治项目 ========== -->
+<section class="conditions-section">
+  <div class="container">
+    <p class="section-label">— 主治项目 —</p>
+    <h2 class="section-title">专业诊疗范围</h2>
+    <div class="compass-wrap" id="compass">
+      <!-- 水墨背景图 -->
+      <img src="images/bg1.jpeg" alt="" class="compass-bg">
+      <!-- 中心圆 -->
+      <div class="compass-center"><span>体质<br>调理</span></div>
+      <!-- 6个罗盘项由JS定位 -->
+    </div>
+  </div>
+</section>
+
+<!-- ========== 治疗步骤 ========== -->
+<section class="methods-section">
+  <div class="container">
+    <p class="section-label">— 治疗方式 —</p>
+    <h2 class="section-title">辨证论治 · 整体调理</h2>
+    <div class="method-grid">
+
+      <div class="method-card">
+        <div class="mc-step">01</div>
+        <div class="mc-icon">🔍</div>
+        <h4>把脉看诊 · 找出病根</h4>
+        <p>医师为您把脉、看舌苔，仔细询问身体哪里不舒服。就像侦探一样，一步步找出让您不舒服的真正原因，而不是头痛医头、脚痛医脚。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-step">02</div>
+        <div class="mc-icon">📋</div>
+        <h4>分析体质 · 制定方向</h4>
+        <p>根据诊断结果，医师会告诉您身体是哪方面失衡了——是气虚、血虚，还是体内湿气太重？接着为您量身定制最适合的调理方向，让您清楚知道接下来要怎么调。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-step">03</div>
+        <div class="mc-icon">📜</div>
+        <h4>开立处方 · 对症下药</h4>
+        <p>医师亲自为您配伍药材，开出专属药方。每一味药都有它的作用——有的负责治本，有的辅助加强，有的减少副作用，确保您吃得有效又安心。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-step">04</div>
+        <div class="mc-icon">🔄</div>
+        <h4>定期追踪 · 调养巩固</h4>
+        <p>服药后记得回诊，医师会根据您的身体变化调整药方。病好了也不急着停药，再用温和的方式巩固根本，让身体真正强壮起来，不再轻易复发。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== 预约 ========== -->
+<section class="cta-section">
+  <div class="container">
+    <p class="eyebrow">预约门诊</p>
+    <h2 class="section-title">即刻预约  内科体质调理科</h2>
+    <p>让济明中医团队为您辨证论治，量身定制最合适的体质调理方案。</p>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">線上預約</a>
+  </div>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-seal.png" alt="济明中医 印" class="footer-seal">
+      <span class="logo-cn footer-logo-cn">济明中医</span>
+      <span class="logo-en footer-logo-en">ZENCARE TCM</span>
+      <p class="footer-tagline">调和身心，济明相伴。<br><em>Pusat Perubatan Tradisional Cina</em></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.4l.6-3H14v-1.5c0-.6.4-1.5 1-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.3"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor"/></svg></a>
+        <a href="https://wa.me/60111074210" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.2-.1.3 0 .5.4.7 1.4 1.7 2.1 2.1.2.1.3.1.5 0l.6-.5c.1-.1.3-.2.5-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7-1 .4-2.3 0-3.9-1.2-1.3-1-2.2-2.1-2.7-3.1-.5-1-.5-2 0-2.8z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>快速链接</h4>
+      <a href="index.html#about">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <a href="acupuncture.html">治療項目</a>
+      <a href="index.html#hours">門診時間</a>
+    </div>
+    <div class="footer-col">
+      <h4>联络资讯</h4>
+      <p>13, Jalan Perdagangan 4, Pusat Perdagangan Bukit Gambir, 84800 Tangkak, Johor</p>
+      <p><a href="tel:+60111074210">+60 11-1074 2100</a></p>
+      <p>周一 9:30AM–1:00PM｜周三至周日 9:30AM–5:30PM｜周二休诊</p>
+    </div>
+    <div class="footer-col">
+      <h4>線上預約</h4>
+      <p class="footer-cta-text">预约门诊，即刻安排您的健康调理。</p>
+      <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">立即预约</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 Zencare TCM 济明中医. All Rights Reserved.</p>
+    <p class="footer-reg">ZENCARE TCM ENTERPRISE 202403064045 (MA0313032-A)</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+// 圆形罗盘 - 6项围绕中心排列
+(function() {
+  const compass = document.getElementById('compass');
+  if (!compass) return;
+
+  // 添加外圈装饰环
+  const ringOuter = document.createElement('div');
+  ringOuter.className = 'compass-ring-outer';
+  compass.appendChild(ringOuter);
+
+  // 添加中圈装饰环
+  const ringMid = document.createElement('div');
+  ringMid.className = 'compass-ring-mid';
+  compass.appendChild(ringMid);
+
+  // 添加内圈装饰环
+  const ring = document.createElement('div');
+  ring.className = 'compass-ring';
+  compass.appendChild(ring);
+
+  // 添加太极阴点
+  const taiji = document.createElement('div');
+  taiji.className = 'taiji-yin';
+  compass.querySelector('.compass-center').appendChild(taiji);
+
+  // 添加8个八卦装饰点
+  for (let i = 0; i < 8; i++) {
+    const dotAngle = (i / 8) * 360;
+    const dotRad = (dotAngle * Math.PI) / 180;
+    const dotX = 50 + 45 * Math.cos(dotRad);
+    const dotY = 50 + 45 * Math.sin(dotRad);
+    const dot = document.createElement('div');
+    dot.className = 'compass-dot';
+    dot.style.left = 'calc(' + dotX + '% - 3px)';
+    dot.style.top = 'calc(' + dotY + '% - 3px)';
+    compass.appendChild(dot);
+  }
+
+  const items = [
+    { cls: 'lung', name: '肺系调理', tags: ['感冒','久咳','气喘','支气管不适','咽喉不适','鼻敏感'] },
+    { cls: 'spleen', name: '脾胃调理', tags: ['消化不良','胃胀气','胃酸过多','食欲不振','便秘','肠胃敏感'] },
+    { cls: 'heart', name: '心系调理', tags: ['心悸','胸闷','血压不稳','血液循环不畅','手脚冰冷','头晕'] },
+    { cls: 'kidney', name: '肾系调理', tags: ['腰膝酸软','水肿','频尿','精力不足','耳鸣','夜尿'] },
+    { cls: 'liver', name: '肝系调理', tags: ['眼睛干涩','容易疲劳','情绪烦躁','皮肤暗沉'] },
+    { cls: 'mind', name: '身心调理', tags: ['失眠','焦虑','压力过大','记忆力减退','注意力不集中','情绪低落'] }
+  ];
+
+  const centerX = 50;
+  const centerY = 48;
+  const radius = 31;
+
+  items.forEach(function(item, i) {
+    const angle = (i / items.length) * 360 - 90;
+    const rad = (angle * Math.PI) / 180;
+    let x = centerX + radius * Math.cos(rad);
+    let y = centerY + radius * Math.sin(rad);
+
+    // 底部项目（肾系调理）单独再上移，与其他项目协调
+    if (i === 3) {
+      y -= 4;
+    }
+
+    // 添加连接线
+    const line = document.createElement('div');
+    line.className = 'compass-line';
+    line.style.transform = 'rotate(' + angle + 'deg)';
+    compass.appendChild(line);
+
+    // 添加项目 - 居中定位
+    const el = document.createElement('div');
+    el.className = 'compass-item';
+    el.style.left = 'calc(' + x + '% - 75px)';
+    el.style.top = 'calc(' + y + '% - 40px)';
+
+    let tagsHtml = '';
+    item.tags.forEach(function(t) {
+      tagsHtml += '<span class="compass-tag">' + t + '</span>';
+    });
+
+    el.innerHTML =
+      '<div class="compass-icon compass-icon--' + item.cls + '"></div>' +
+      '<h4>' + item.name + '</h4>' +
+      '<div class="compass-tags">' + tagsHtml + '</div>';
+
+    compass.appendChild(el);
+  });
+})();
+</script>
+</body>
+</html>

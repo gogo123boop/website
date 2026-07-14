@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>针灸正骨伤科 - Zencare TCM 济明中医</title>
+<meta name="description" content="济明中医针灸正骨伤科，结合传统针灸与现代解剖学、肌动学与生物力学，有效减缓神经与筋膜压力。主治运动伤害、颜面神经失调、坐骨神经痛、肩颈酸痛、下背痛及关节退化疾病。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/logo-seal.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+
+/* ===== 子页面通用样式 ===== */
+
+/* 面包屑 */
+.breadcrumb {
+  padding: 18px 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+.breadcrumb a { color: var(--color-ink-soft); transition: color .2s; }
+.breadcrumb a:hover { color: var(--color-brick); }
+.breadcrumb span { margin: 0 8px; opacity: 0.35; }
+
+/* ===== Banner ===== */
+.subpage-banner {
+  padding: calc(var(--header-h) + 28px) 0 24px;
+  background: linear-gradient(135deg, #0A0F3F 0%, #1A2260 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.subpage-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle at center, rgba(118,21,24,0.15), transparent 70%);
+  z-index: 0;
+}
+.subpage-banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 70%);
+  z-index: 0;
+}
+.subpage-banner .container { position: relative; z-index: 1; }
+.subpage-banner .eyebrow {
+  color: rgba(235,250,255,0.5);
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  margin-bottom: 12px;
+  font-weight: 500;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+.subpage-banner .section-title {
+  color: #fff;
+  font-size: 34px;
+  margin-bottom: 6px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.subpage-banner .en-subtitle {
+  color: rgba(235,250,255,0.4);
+  font-size: 13px;
+  letter-spacing: 0.28em;
+  font-weight: 400;
+  margin: 0;
+  display: block;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* ===== 正骨视觉区 - 全宽横幅 ===== */
+.pulse-section {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pulse-section .pulse-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.pulse-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10,15,63,0.55), rgba(10,15,63,0.25));
+  z-index: 1;
+}
+.pulse-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 0 20px;
+}
+.pulse-content .section-label {
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.6);
+  font-weight: 500;
+  margin: 0 0 12px;
+  text-transform: uppercase;
+}
+.pulse-content h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+}
+.pulse-content p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.8;
+  margin: 0;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.2);
+}
+
+/* ===== 主治项目 - 图文左右布局 ===== */
+.conditions-section {
+  padding: 60px 0 80px;
+  background: #F7F9FC;
+}
+.conditions-section .section-label {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--color-brick);
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+.conditions-section .section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+/* 图文卡片 */
+.condition-card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all .4s ease;
+  margin-bottom: 28px;
+}
+.condition-card:hover {
+  border-color: var(--color-brick);
+  box-shadow: 0 12px 40px rgba(118,21,24,0.08);
+  transform: translateY(-3px);
+}
+.condition-card .cc-image {
+  flex: 0 0 280px;
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+.condition-card .cc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+.condition-card:hover .cc-image img {
+  transform: scale(1.08);
+}
+.condition-card .cc-image::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, #fff);
+  pointer-events: none;
+}
+.condition-card:nth-child(even) .cc-image {
+  order: 1;
+}
+.condition-card:nth-child(even) .cc-image::after {
+  left: 0;
+  right: auto;
+  background: linear-gradient(270deg, transparent, #fff);
+}
+.condition-card .cc-content {
+  flex: 1;
+  padding: 32px 36px 32px 0;
+}
+.condition-card:nth-child(even) .cc-content {
+  padding: 32px 0 32px 36px;
+}
+.condition-card .cc-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.condition-card .cc-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-brick), var(--color-brick-dark));
+  color: #fff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.condition-card .cc-title-group { flex: 1; }
+.condition-card .cc-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0;
+  line-height: 1.3;
+}
+.condition-card .cc-en {
+  font-size: 11px;
+  color: var(--color-brick);
+  letter-spacing: 0.08em;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.condition-card .cc-desc {
+  font-size: 14px;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  margin: 0 0 16px;
+}
+.condition-card .cc-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.condition-card .cc-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: #F7F9FC;
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--color-ink);
+  font-weight: 500;
+  transition: all .3s ease;
+}
+.condition-card .cc-item:hover {
+  background: rgba(118,21,24,0.06);
+  color: var(--color-brick);
+}
+.condition-card .cc-item .cc-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-brick);
+  flex-shrink: 0;
+  opacity: 0.5;
+}
+
+/* ===== 治疗方式区块 ===== */
+.methods-section {
+  padding: 80px 0;
+  background: #fff;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.methods-section .section-label {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--color-brick);
+  font-weight: 600;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+.methods-section .section-title {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.method-card {
+  background: #F7F9FC;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  padding: 32px 22px 28px;
+  text-align: center;
+  transition: all .4s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+.method-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 3px;
+  background: var(--color-brick);
+  border-radius: 2px;
+  opacity: 0;
+  transition: all .4s ease;
+}
+.method-card:hover {
+  border-color: var(--color-brick);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(118,21,24,0.08);
+}
+.method-card:hover::after {
+  opacity: 1;
+  left: 10%;
+  right: 10%;
+}
+.method-card .mc-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, rgba(118,21,24,0.08), rgba(118,21,24,0.02));
+  border-radius: 16px;
+  margin: 0 auto 18px;
+  transition: all .4s ease;
+}
+.method-card:hover .mc-icon-wrap {
+  background: var(--color-brick);
+  transform: scale(1.05);
+}
+.method-card .mc-icon {
+  font-size: 24px;
+  transition: all .4s ease;
+}
+.method-card:hover .mc-icon {
+  filter: brightness(0) invert(1);
+}
+.method-card h4 {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin: 0 0 10px;
+}
+.method-card p {
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  margin: 0;
+  flex: 1;
+}
+
+/* ===== 预约区块 ===== */
+.cta-section {
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 400px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-brick), transparent);
+  opacity: 0.3;
+}
+.cta-section .section-title { margin-bottom: 12px; }
+.cta-section p { color: var(--color-ink-soft); font-size: 16px; margin-bottom: 32px; }
+
+/* ===== 响应式 ===== */
+@media (max-width: 960px) {
+  .pulse-section { height: 360px; }
+  .condition-card { flex-direction: column; gap: 0; }
+  .condition-card .cc-image { flex: none; width: 100%; height: 220px; }
+  .condition-card .cc-image::after { display: none; }
+  .condition-card:nth-child(even) .cc-image { order: 0; }
+  .condition-card .cc-content { padding: 28px 24px !important; }
+  .method-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .pulse-section { height: 300px; }
+  .pulse-content h2 { font-size: 24px; }
+  .pulse-content p { font-size: 14px; }
+  .method-grid { grid-template-columns: 1fr; }
+  .condition-card .cc-items { grid-template-columns: 1fr; }
+  .condition-card .cc-image { height: 180px; }
+  .subpage-banner { padding: calc(var(--header-h) + 20px) 0 24px; }
+  .subpage-banner .section-title { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== Header ========== -->
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo-full.png" alt="Zencare TCM 济明中医" class="logo-img">
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#hero">首頁</a>
+      <a href="index.html#about">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <div class="nav-dropdown">
+        <a href="javascript:void(0)">治療項目</a>
+        <div class="nav-dropdown-menu">
+          <a href="acupuncture.html">针灸正骨伤科</a>
+          <a href="internal.html">内科体质调理</a>
+          <a href="gynecology.html">妇儿科</a>
+        </div>
+      </div>
+      <a href="index.html#hours">門診時間</a>
+      <a href="index.html#contact">聯絡我們</a>
+    </nav>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary header-cta" target="_blank">線上預約</a>
+    <button class="nav-toggle" id="navToggle" aria-label="开启选单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ========== Banner ========== -->
+<section class="subpage-banner">
+  <div class="container">
+    <p class="eyebrow">诊疗项目</p>
+    <h1 class="section-title">针灸正骨伤科</h1>
+    <p class="en-subtitle">ACUPUNCTURE & MANUAL THERAPY</p>
+  </div>
+</section>
+
+<!-- ========== 面包屑 ========== -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">首頁</a>
+    <span>/</span>
+    <span>治療項目</span>
+    <span>/</span>
+    <span>针灸正骨伤科</span>
+  </div>
+</div>
+
+<!-- ========== 正骨视觉区 - 全宽横幅 ========== -->
+<section class="pulse-section">
+  <img src="images/zhenggu.jpeg" alt="针灸正骨" class="pulse-bg">
+  <div class="pulse-content">
+    <p class="section-label">— 针药并施 · 筋骨同治 —</p>
+    <h2>传统针灸 · 现代正骨</h2>
+    <p>结合传统针灸与结构复位手法，精准定位疼痛与功能受限的根源。<br>科学、安全、有效地恢复身体的自然活动力。</p>
+  </div>
+</section>
+
+<!-- ========== 主治项目 ========== -->
+<section class="conditions-section">
+  <div class="container">
+    <p class="section-label">— 主治项目 —</p>
+    <h2 class="section-title">专业诊疗范围</h2>
+
+    <!-- 神经疾病 -->
+    <div class="condition-card">
+      <div class="cc-image">
+        <img src="images/acu1.jpeg" alt="神经疾病">
+      </div>
+      <div class="cc-content">
+        <div class="cc-header">
+          <div class="cc-icon" style="display:none"></div>
+          <div class="cc-title-group">
+            <h3 class="cc-title">神经疾病</h3>
+            <span class="cc-en">Neurological Disorders</span>
+          </div>
+        </div>
+        <p class="cc-desc">针灸调节神经系统功能，改善神经传导与血液循环，有效缓解各类神经相关疾病症状。</p>
+        <div class="cc-items">
+          <div class="cc-item"><span class="cc-dot"></span>颜面神经失调</div>
+          <div class="cc-item"><span class="cc-dot"></span>坐骨神经痛</div>
+          <div class="cc-item"><span class="cc-dot"></span>中风后遗症</div>
+          <div class="cc-item"><span class="cc-dot"></span>失智症</div>
+          <div class="cc-item"><span class="cc-dot"></span>帕金森氏症</div>
+          <div class="cc-item"><span class="cc-dot"></span>颈椎症候群</div>
+          <div class="cc-item"><span class="cc-dot"></span>手脚麻痹</div>
+          <div class="cc-item"><span class="cc-dot"></span>头晕头痛</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 运动医学 -->
+    <div class="condition-card">
+      <div class="cc-image">
+        <img src="images/acu2.jpeg" alt="运动医学">
+      </div>
+      <div class="cc-content">
+        <div class="cc-header">
+          <div class="cc-icon" style="display:none"></div>
+          <div class="cc-title-group">
+            <h3 class="cc-title">运动医学</h3>
+            <span class="cc-en">Sports Medicine</span>
+          </div>
+        </div>
+        <p class="cc-desc">针对运动伤害与软组织损伤，结合针灸与结构功能平衡治疗，加速修复、恢复运动功能。</p>
+        <div class="cc-items">
+          <div class="cc-item"><span class="cc-dot"></span>肌肉关节酸痛</div>
+          <div class="cc-item"><span class="cc-dot"></span>韧带拉伤</div>
+          <div class="cc-item"><span class="cc-dot"></span>关节扭伤</div>
+          <div class="cc-item"><span class="cc-dot"></span>网球肘</div>
+          <div class="cc-item"><span class="cc-dot"></span>高尔夫球肘</div>
+          <div class="cc-item"><span class="cc-dot"></span>淤血肿胀</div>
+          <div class="cc-item"><span class="cc-dot"></span>弹弓手</div>
+          <div class="cc-item"><span class="cc-dot"></span>肌肉抽筋</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 慢性疼痛 -->
+    <div class="condition-card">
+      <div class="cc-image">
+        <img src="images/acu3.jpeg" alt="慢性疼痛">
+      </div>
+      <div class="cc-content">
+        <div class="cc-header">
+          <div class="cc-icon" style="display:none"></div>
+          <div class="cc-title-group">
+            <h3 class="cc-title">慢性疼痛</h3>
+            <span class="cc-en">Chronic Pain</span>
+          </div>
+        </div>
+        <p class="cc-desc">长期疼痛影响生活品质，透过针灸、手法、神经训练与运动康复，从根本改善疼痛循环，重拾无痛生活。</p>
+        <div class="cc-items">
+          <div class="cc-item"><span class="cc-dot"></span>头痛</div>
+          <div class="cc-item"><span class="cc-dot"></span>肩颈酸痛</div>
+          <div class="cc-item"><span class="cc-dot"></span>下背痛</div>
+          <div class="cc-item"><span class="cc-dot"></span>慢性疼痛评估</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 关节退化疾病 -->
+    <div class="condition-card">
+      <div class="cc-image">
+        <img src="images/acu4.jpeg" alt="关节退化疾病">
+      </div>
+      <div class="cc-content">
+        <div class="cc-header">
+          <div class="cc-icon" style="display:none"></div>
+          <div class="cc-title-group">
+            <h3 class="cc-title">关节退化疾病</h3>
+            <span class="cc-en">Joint Degeneration</span>
+          </div>
+        </div>
+        <p class="cc-desc">退化性关节疾病透过针灸、正骨与结构复位，减缓关节磨损、改善活动度，延缓退化进程。</p>
+        <div class="cc-items">
+          <div class="cc-item"><span class="cc-dot"></span>腰椎滑脱</div>
+          <div class="cc-item"><span class="cc-dot"></span>椎间盘突出</div>
+          <div class="cc-item"><span class="cc-dot"></span>膝关节退化</div>
+          <div class="cc-item"><span class="cc-dot"></span>五十肩</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== 治疗方式 ========== -->
+<section class="methods-section">
+  <div class="container">
+    <p class="section-label">— 治疗方式 —</p>
+    <h2 class="section-title">多元疗法 · 精准治疗</h2>
+    <div class="method-grid">
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">📍</span></div>
+        <h4>针灸治疗</h4>
+        <p>以无菌毫针精准刺入穴位，调节经络气血、缓解神经筋膜压力，达到疏通经络、调和阴阳的治疗效果。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">🦴</span></div>
+        <h4>整骨治疗</h4>
+        <p>运用手法调整骨骼与关节位置，恢复身体结构平衡，改善因错位引起的疼痛与功能障碍。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">🔄</span></div>
+        <h4>关节松动治疗</h4>
+        <p>透过温和的关节松动手法，改善关节活动度、减轻僵硬与疼痛，恢复关节正常功能与灵活性。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">⚡</span></div>
+        <h4>神经脱敏治疗</h4>
+        <p>针对敏感或受压的神经进行手法与针法治疗，降低神经敏感度，缓解神经性疼痛与异常感觉。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">🫙</span></div>
+        <h4>拔罐放血治疗</h4>
+        <p>结合拔罐与放血疗法，排除局部瘀滞、改善血液循环，有效缓解肌肉紧张与深层组织炎症。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">⚖️</span></div>
+        <h4>结构功能治疗</h4>
+        <p>评估整体身体结构与功能关系，透过针对性手法与训练，恢复身体力学平衡与动作协调性。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">🩹</span></div>
+        <h4>包扎治疗</h4>
+        <p>运用弹性绷带与贴扎技术，固定保护受伤部位、减轻肿胀，提供关节与肌肉稳定支撑。</p>
+      </div>
+
+      <div class="method-card">
+        <div class="mc-icon-wrap"><span class="mc-icon">📋</span></div>
+        <h4>运动康复评估</h4>
+        <p>根据个人肌力、生活型态与疼痛部位，量身设计运动训练处方，强化核心肌群、预防再发。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== 预约 ========== -->
+<section class="cta-section">
+  <div class="container">
+    <p class="eyebrow">预约门诊</p>
+    <h2 class="section-title">即刻预约针灸正骨伤科</h2>
+    <p>让济明中医团队为您精准诊断，量身定制最合适的治疗方案。</p>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">線上預約</a>
+  </div>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-seal.png" alt="济明中医 印" class="footer-seal">
+      <span class="logo-cn footer-logo-cn">济明中医</span>
+      <span class="logo-en footer-logo-en">ZENCARE TCM</span>
+      <p class="footer-tagline">调和身心，济明相伴。<br><em>Pusat Perubatan Tradisional Cina</em></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.4l.6-3H14v-1.5c0-.6.4-1.5 1-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.3"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor"/></svg></a>
+        <a href="https://wa.me/60111074210" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.2-.1.3 0 .5.4.7 1.4 1.7 2.1 2.1.2.1.3.1.5 0l.6-.5c.1-.1.3-.2.5-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7-1 .4-2.3 0-3.9-1.2-1.3-1-2.2-2.1-2.7-3.1-.5-1-.5-2 0-2.8z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>快速链接</h4>
+      <a href="index.html#about">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <a href="acupuncture.html">治療項目</a>
+      <a href="index.html#hours">門診時間</a>
+    </div>
+    <div class="footer-col">
+      <h4>联络资讯</h4>
+      <p>13, Jalan Perdagangan 4, Pusat Perdagangan Bukit Gambir, 84800 Tangkak, Johor</p>
+      <p><a href="tel:+60111074210">+60 11-1074 2100</a></p>
+      <p>周一 9:30AM–1:00PM｜周三至周日 9:30AM–5:30PM｜周二休诊</p>
+    </div>
+    <div class="footer-col">
+      <h4>線上預約</h4>
+      <p class="footer-cta-text">预约门诊，即刻安排您的健康调理。</p>
+      <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">立即预约</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 Zencare TCM 济明中医. All Rights Reserved.</p>
+    <p class="footer-reg">ZENCARE TCM ENTERPRISE 202403064045 (MA0313032-A)</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

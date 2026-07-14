@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>認識醫師 - Zencare TCM 济明中医</title>
+<meta name="description" content="Zencare TCM 济明中医医师团队介绍，专业中医内科诊疗，传承医道，守护您的健康。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="images/logo-seal.png">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ===== 認識醫師页面专属样式 ===== */
+
+/* Banner — 与子页面统一风格 */
+.doctor-banner {
+  padding: calc(var(--header-h) + 28px) 0 32px;
+  background: linear-gradient(135deg, #0A0F3F 0%, #1A2260 100%);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.doctor-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle at center, rgba(118,21,24,0.15), transparent 70%);
+  z-index: 0;
+}
+.doctor-banner .container {
+  position: relative;
+  z-index: 1;
+}
+.doctor-banner .eyebrow {
+  color: rgba(235,250,255,0.45);
+  font-size: 12px;
+  letter-spacing: 0.25em;
+  margin-bottom: 10px;
+}
+.doctor-banner .section-title {
+  color: #fff;
+  font-size: 30px;
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+.doctor-banner .banner-divider {
+  width: 32px;
+  height: 2px;
+  background: var(--color-brick);
+  margin: 0 auto 14px;
+  opacity: 0.6;
+}
+.doctor-banner p {
+  color: rgba(235,250,255,0.65);
+  font-size: 14px;
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* 医师列表 */
+.doctor-list {
+  padding: 80px 0 100px;
+  background: var(--color-paper);
+}
+.doctor-card {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--color-line);
+}
+.doctor-card:first-child {
+  padding-top: 0;
+}
+.doctor-card:last-child {
+  border-bottom: none;
+}
+
+.doctor-photo-frame {
+  position: relative;
+  border: 1px solid var(--color-gold);
+  padding: 10px;
+}
+.doctor-photo-frame::before,
+.doctor-photo-frame::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 20px;
+  border: 2px solid var(--color-brick);
+}
+.doctor-photo-frame::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+.doctor-photo-frame::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+.doctor-photo {
+  aspect-ratio: 3/4;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: linear-gradient(160deg, #EBFAFF, #C7D3E8);
+}
+.doctor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.doctor-info {
+  padding-top: 8px;
+}
+.doctor-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+}
+.doctor-title {
+  font-size: 14px;
+  color: var(--color-brick);
+  letter-spacing: 0.08em;
+  margin: 0 0 20px;
+  font-weight: 500;
+}
+.doctor-desc {
+  font-size: 15px;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  margin: 0 0 24px;
+}
+.doctor-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.specialty-tag {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  background: var(--color-card);
+}
+
+/* 预约区块 */
+.doctor-cta {
+  padding: 80px 0;
+  background: var(--color-card);
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+}
+.doctor-cta .section-title {
+  margin-bottom: 12px;
+}
+.doctor-cta p {
+  color: var(--color-ink-soft);
+  font-size: 16px;
+  margin-bottom: 32px;
+}
+
+/* 面包屑导航 */
+.breadcrumb {
+  padding: 20px 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+.breadcrumb a {
+  color: var(--color-ink-soft);
+  transition: color .2s;
+}
+.breadcrumb a:hover {
+  color: var(--color-brick);
+}
+.breadcrumb span {
+  margin: 0 8px;
+  opacity: 0.4;
+}
+
+/* 响应式 */
+@media (max-width: 960px) {
+  .doctor-card {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .doctor-photo-frame {
+    max-width: 240px;
+  }
+}
+@media (max-width: 560px) {
+  .doctor-banner {
+    padding: calc(var(--header-h) + 20px) 0 24px;
+  }
+  .doctor-banner .section-title { font-size: 24px; }
+  .doctor-list {
+    padding: 60px 0;
+  }
+  .doctor-card {
+    padding: 36px 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== Header ========== -->
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/logo-full.png" alt="Zencare TCM 济明中医" class="logo-img">
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#hero">首頁</a>
+      <a href="index.html#about">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <div class="nav-dropdown">
+        <a href="javascript:void(0)">治療項目</a>
+        <div class="nav-dropdown-menu">
+          <a href="acupuncture.html">针灸正骨伤科</a>
+          <a href="internal.html">内科体质调理</a>
+          <a href="gynecology.html">妇儿科</a>
+        </div>
+      </div>
+      <a href="index.html#hours">門診時間</a>
+      <a href="index.html#contact">聯絡我們</a>
+    </nav>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary header-cta" target="_blank">線上預約</a>
+    <button class="nav-toggle" id="navToggle" aria-label="开启选单" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ========== Banner ========== -->
+<section class="doctor-banner">
+  <div class="container">
+    <p class="eyebrow">专业团队</p>
+    <h1 class="section-title">認識醫師</h1>
+    <div class="banner-divider"></div>
+    <p>望闻问切，四诊合参。济明中医团队以传统中医辨证为本，结合现代医学知识，为每一位患者提供最合适的诊疗方案。</p>
+  </div>
+</section>
+
+<!-- ========== 面包屑 ========== -->
+<div class="container">
+  <div class="breadcrumb">
+    <a href="index.html">首頁</a>
+    <span>/</span>
+    <span>認識醫師</span>
+  </div>
+</div>
+
+<!-- ========== 医师列表 ========== -->
+<section class="doctor-list">
+  <div class="container">
+
+    <!-- 医师 1 -->
+    <div class="doctor-card">
+      <div class="doctor-photo-frame">
+        <div class="doctor-photo">
+          <img src="assets/doctor1.jpg" alt="吴志瀚医师" class="doctor-img">
+        </div>
+      </div>
+      <div class="doctor-info">
+        <h2 class="doctor-name">吴志瀚医师</h2>
+        <p class="doctor-title">主治医师</p>
+        <p class="doctor-desc">
+          擅长结合中医经络、肌肉骨骼与脑神经学相结合，有效针对各种身体顽固性疼痛，运动损伤。
+          结合现代诊疗技术，针对各类内科杂病、慢性病调理有深入研究。
+          秉持「医者仁心」的信念，细心倾听每一位患者的需求，制定个性化的调养方案。
+        </p>
+        <div class="doctor-specialties">
+          <span class="specialty-tag">疼痛管理</span>
+          <span class="specialty-tag">疼痛筋骨错位</span>
+          <span class="specialty-tag">慢性病调理</span>
+          <span class="specialty-tag">针灸正骨</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 医师 2 -->
+    <div class="doctor-card">
+      <div class="doctor-photo-frame">
+        <div class="doctor-photo">
+          <img src="assets/doctor2.png" alt="吴惠馨医师" class="doctor-img">
+        </div>
+      </div>
+      <div class="doctor-info">
+        <h2 class="doctor-name">吴惠馨医师</h2>
+        <p class="doctor-title">主治医师</p>
+        <p class="doctor-desc">
+          专攻中医妇科与脾胃科，擅长女性经期调理、更年期调理、孕产前后调理，
+          以及肠胃虚弱体质。以温和细腻的诊疗风格，
+          陪伴患者走过各个生命阶段的身心变化。
+        </p>
+        <div class="doctor-specialties">
+          <span class="specialty-tag">中医妇科</span>
+          <span class="specialty-tag">备孕备育</span>
+          <span class="specialty-tag">中医脾胃科</span>
+          <span class="specialty-tag">针灸美容</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== 预约区块 ========== -->
+<section class="doctor-cta">
+  <div class="container">
+    <p class="eyebrow">预约门诊</p>
+    <h2 class="section-title">即刻安排您的健康调理</h2>
+    <p>欢迎预约看诊，让济明中医团队为您提供专业的诊疗服务。</p>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">線上預約</a>
+  </div>
+</section>
+
+<!-- ========== Footer ========== -->
+<footer class="site-footer" id="contact">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo-seal.png" alt="济明中医 印" class="footer-seal">
+      <span class="logo-cn footer-logo-cn">济明中医</span>
+      <span class="logo-en footer-logo-en">ZENCARE TCM</span>
+      <p class="footer-tagline">调和身心，济明相伴。<br><em>Pusat Perubatan Tradisional Cina</em></p>
+      <div class="footer-social">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.4l.6-3H14v-1.5c0-.6.4-1.5 1-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.3"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor"/></svg></a>
+        <a href="https://wa.me/60111074210" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.2-.1.3 0 .5.4.7 1.4 1.7 2.1 2.1.2.1.3.1.5 0l.6-.5c.1-.1.3-.2.5-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7-1 .4-2.3 0-3.9-1.2-1.3-1-2.2-2.1-2.7-3.1-.5-1-.5-2 0-2.8z" fill="currentColor"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>快速链接</h4>
+      <a href="index.html#about">探索濟明</a>
+      <a href="doctors.html">認識醫師</a>
+      <a href="acupuncture.html">治療項目</a>
+      <a href="index.html#hours">門診時間</a>
+    </div>
+    <div class="footer-col">
+      <h4>联络资讯</h4>
+      <p>13, Jalan Perdagangan 4, Pusat Perdagangan Bukit Gambir, 84800 Tangkak, Johor</p>
+      <p><a href="tel:+60111074210">+60 11-1074 2100</a></p>
+      <p>周一 9:30AM–1:00PM｜周三至周日 9:30AM–5:30PM｜周二休诊</p>
+    </div>
+    <div class="footer-col">
+      <h4>線上預約</h4>
+      <p class="footer-cta-text">预约门诊，即刻安排您的健康调理。</p>
+      <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">立即预约</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2026 Zencare TCM 济明中医. All Rights Reserved.</p>
+    <p class="footer-reg">ZENCARE TCM ENTERPRISE 202403064045 (MA0313032-A)</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

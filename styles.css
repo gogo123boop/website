@@ -1,5 +1,5 @@
 /* ==========================================================
-   Zencare TCM 濟明中醫 — Design Tokens
+   Zencare CM 濟明中醫 — Design Tokens
    ========================================================== */
 :root{
   /* Color — 品牌官方色系 */
@@ -28,7 +28,7 @@
 
   /* Layout */
   --container-w: 1160px;
-  --header-h: 84px;
+  --header-h: 110px;
 }
 
 *{ box-sizing: border-box; }
@@ -105,7 +105,7 @@ ul{ list-style:none; margin:0; padding:0; }
   line-height:1.1;
 }
 .logo-img{
-  height: 52px;
+  height: 120px;
   width: auto;
 }
 .logo-cn{
@@ -124,16 +124,17 @@ ul{ list-style:none; margin:0; padding:0; }
   display:flex;
   gap: 36px;
   margin-left:auto;
+  align-items:center;
 }
-.main-nav a{
+.main-nav > a, .main-nav .nav-dropdown > a{
   font-size: 15px;
   color: var(--color-ink-soft);
   position:relative;
   padding: 6px 0;
   transition: color .2s;
 }
-.main-nav a:hover{ color: var(--color-brick); }
-.main-nav a::after{
+.main-nav > a:hover, .main-nav .nav-dropdown > a:hover{ color: var(--color-brick); }
+.main-nav > a::after{
   content:'';
   position:absolute;
   left:0; bottom:0;
@@ -141,7 +142,69 @@ ul{ list-style:none; margin:0; padding:0; }
   background: var(--color-brick);
   transition: width .25s ease;
 }
-.main-nav a:hover::after{ width:100%; }
+.main-nav > a:hover::after{ width:100%; }
+
+
+/* Dropdown */
+.nav-dropdown {
+  position: relative;
+}
+.nav-dropdown > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-dropdown > a::after {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  margin-top: -3px;
+  transition: transform .2s;
+}
+.nav-dropdown:hover > a::after {
+  transform: rotate(-135deg);
+  margin-top: 1px;
+}
+/* Remove the underline hover effect from the dropdown trigger */
+.nav-dropdown > a::before { display: none; }
+.nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  box-shadow: 0 8px 24px rgba(10,15,63,0.1);
+  min-width: 200px;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all .25s ease;
+  z-index: 200;
+}
+.nav-dropdown:hover .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.nav-dropdown-menu a {
+  display: block;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: var(--color-ink-soft);
+  transition: all .2s;
+  white-space: nowrap;
+}
+.nav-dropdown-menu a::after { display: none; }
+.nav-dropdown-menu a:hover {
+  color: var(--color-brick);
+  background: rgba(118,21,24,0.04);
+}
+
+
 
 .header-cta{ padding: 10px 22px; font-size:14px; flex-shrink:0; }
 
@@ -381,7 +444,241 @@ ul{ list-style:none; margin:0; padding:0; }
 }
 
 /* ==========================================================
-   Services
+   Guarantees — 三大保证
+   ========================================================== */
+.guarantees{
+  padding: 56px 0;
+  background: var(--color-ice);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.guarantees-head{
+  max-width: 600px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+.guarantees-head .eyebrow{ text-align:center; }
+.guarantees-lead{
+  color: var(--color-ink-soft);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.guarantees-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.guarantee-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  padding: 28px 20px 24px;
+  transition: all .35s ease;
+  position: relative;
+}
+.guarantee-card:hover{
+  border-color: var(--color-brick);
+  box-shadow: 0 6px 20px rgba(118,21,24,0.08);
+  transform: translateY(-2px);
+}
+
+.guarantee-icon-wrap{
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(118,21,24,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.guarantee-icon{
+  width: 24px;
+  height: 24px;
+  color: var(--color-brick);
+}
+.guarantee-icon svg{ width:100%; height:100%; }
+
+.guarantee-badge{
+  display: inline-block;
+  padding: 2px 12px;
+  background: var(--color-brick);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.guarantee-card h3{
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 2px;
+}
+.guarantee-card .guarantee-en{
+  font-size: 10px;
+  color: var(--color-brick);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+  font-weight: 400;
+}
+.guarantee-card .guarantee-desc{
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ==========================================================
+   Core Services — 三大核心专科
+   ========================================================== */
+
+.core-services{
+  padding: 100px 0;
+  background: var(--color-card);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.core-services-head{
+  max-width: 640px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+.core-services-head .eyebrow{ text-align:center; }
+.core-services-lead{
+  color: var(--color-ink-soft);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.core-services-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.core-service-card{
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  padding: 40px 32px 36px;
+  transition: all .35s ease;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+.core-service-card::before{
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--color-brick);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.core-service-card:hover{
+  border-color: var(--color-brick);
+  box-shadow: 0 12px 36px rgba(118,21,24,0.10);
+  transform: translateY(-4px);
+}
+.core-service-card:hover::before{
+  opacity: 1;
+}
+
+.core-service-badge{
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-brick);
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+
+.core-service-icon{
+  width: 52px;
+  height: 52px;
+  color: var(--color-brick);
+  margin-bottom: 18px;
+}
+.core-service-icon svg{ width:100%; height:100%; }
+
+.core-service-card h3{
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin: 0 0 4px;
+}
+.core-service-en{
+  font-size: 11px;
+  color: var(--color-brick);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+  font-weight: 400;
+}
+.core-service-desc{
+  font-size: 14.5px;
+  color: var(--color-ink-soft);
+  line-height: 1.8;
+  margin: 0 0 20px;
+  flex: 1;
+}
+
+.core-service-conditions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+}
+.core-service-conditions li{
+  display: inline-block;
+  padding: 4px 12px;
+  border: 1px solid var(--color-line);
+  border-radius: 2px;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  background: var(--color-card);
+  transition: all .2s ease;
+}
+.core-service-card:hover .core-service-conditions li{
+  border-color: rgba(118,21,24,0.2);
+  color: var(--color-brick);
+}
+
+.core-service-cta{
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-brick);
+  letter-spacing: 0.04em;
+  transition: gap .25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.core-service-card:hover .core-service-cta{
+  gap: 8px;
+}
+
+/* ==========================================================
+   Services (旧版保留，用于 treatments.html)
    ========================================================== */
 .services{
   padding: 100px 0;
@@ -427,6 +724,7 @@ ul{ list-style:none; margin:0; padding:0; }
   color: var(--color-ink-soft);
   margin:0;
 }
+
 
 /* ==========================================================
    Gallery
@@ -630,7 +928,33 @@ ul{ list-style:none; margin:0; padding:0; }
     padding: 8px 32px 20px;
   }
   .main-nav.is-open{ display:flex; }
-  .main-nav a{ padding: 12px 0; border-bottom: 1px solid var(--color-line); }
+  .main-nav > a{ padding: 12px 0; border-bottom: 1px solid var(--color-line); }
+  .nav-dropdown {
+    flex-direction: column;
+    border-bottom: 1px solid var(--color-line);
+  }
+  .nav-dropdown > a {
+    padding: 12px 0;
+    width: 100%;
+  }
+  .nav-dropdown > a::after { display: none; }
+  .nav-dropdown-menu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: 0 0 8px 16px;
+    min-width: auto;
+    background: transparent;
+  }
+  .nav-dropdown-menu a {
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: none;
+  }
+  .nav-dropdown-menu a:hover { background: transparent; }
   .header-cta{ display:none; }
   .nav-toggle{ display:flex; }
   .hero-inner{ grid-template-columns: 1fr; }
@@ -641,16 +965,29 @@ ul{ list-style:none; margin:0; padding:0; }
   .about-stats{ gap: 28px; flex-wrap:wrap; }
 
   .services-grid{ grid-template-columns: repeat(2, 1fr); }
+  .guarantees-grid{ grid-template-columns: repeat(2, 1fr); }
+  .core-services-grid{ grid-template-columns: repeat(2, 1fr); }
+
 
   .hours-inner{ grid-template-columns: 1fr; gap: 56px; }
   .footer-inner{ grid-template-columns: 1fr 1fr; }
 }
+
 @media (max-width: 560px){
   .services-grid{ grid-template-columns: 1fr; }
+  .guarantees-grid{ grid-template-columns: 1fr; }
+  .guarantees{ padding: 40px 0; }
+  .guarantee-card{ padding: 24px 20px 20px; }
+  .core-services-grid{ grid-template-columns: 1fr; }
+  .core-services{ padding: 60px 0; }
+  .core-service-card{ padding: 32px 24px 28px; }
   .footer-inner{ grid-template-columns: 1fr; gap: 36px; }
   .gallery-item{ width: 220px; }
 }
+
+
 @media (max-width: 480px){
   .container{ padding: 0 20px; }
   .hero{ padding-top: calc(var(--header-h) + 40px); }
 }
+
