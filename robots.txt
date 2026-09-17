@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zencaretcm.com/sitemap.xml
+Sitemap: https://www.zencaretcm.com/sitemap.xml
