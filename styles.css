@@ -32,6 +32,7 @@
 }
 
 *{ box-sizing: border-box; }
+[hidden]{ display:none !important; }
 html{ scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
 body{
   margin:0;
@@ -206,6 +207,30 @@ ul{ list-style:none; margin:0; padding:0; }
 
 
 
+/* Language switch */
+.lang-switch{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:13px;
+  flex-shrink:0;
+}
+.lang-btn{
+  background:none;
+  border:none;
+  padding:4px 2px;
+  font-family: var(--font-body);
+  font-size:13px;
+  color: var(--color-ink-soft);
+  cursor:pointer;
+  transition: color .2s;
+}
+.lang-btn[aria-pressed="true"]{
+  color: var(--color-brick);
+  font-weight:700;
+}
+.lang-sep{ color: var(--color-line); font-size:12px; }
+
 .header-cta{ padding: 10px 22px; font-size:14px; flex-shrink:0; }
 
 .nav-toggle{
@@ -267,6 +292,7 @@ ul{ list-style:none; margin:0; padding:0; }
   color: var(--color-ink);
 }
 .hero-title .accent{ color: var(--color-brick); }
+html[data-lang="en"] .hero-title{ font-size: clamp(30px, 3.6vw, 46px); }
 .hero-sub{
   font-size: 16px;
   color: var(--color-ink-soft);
@@ -772,6 +798,73 @@ ul{ list-style:none; margin:0; padding:0; }
 .ph-5{ background: linear-gradient(155deg, #761518, #0A0F3F); }
 
 /* ==========================================================
+   Testimonials
+   ========================================================== */
+.testimonials{
+  padding: 100px 0;
+  background: var(--color-ice);
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+.testimonials-head{
+  max-width: 600px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+.testimonials-head .eyebrow{ text-align:center; }
+.testimonials-rating{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--color-ink-soft);
+}
+.testimonials-rating .rating-stars{ color: var(--color-gold); font-size: 14px; letter-spacing: 1px; }
+
+.testimonials-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.testimonial-card{
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  padding: 32px 28px;
+  transition: all .3s ease;
+}
+.testimonial-card:hover{
+  border-color: var(--color-brick);
+  box-shadow: 0 10px 28px rgba(118,21,24,0.08);
+  transform: translateY(-3px);
+}
+.testimonial-stars{
+  margin: 0 0 14px;
+  color: var(--color-gold);
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+.testimonial-text{
+  margin: 0 0 18px;
+  font-size: 14.5px;
+  color: var(--color-ink);
+  line-height: 1.8;
+}
+.testimonial-author{
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+  font-weight: 500;
+}
+
+.testimonials-more{
+  display: table;
+  margin: 40px auto 0;
+}
+
+/* ==========================================================
    Hours & Location
    ========================================================== */
 .hours{ padding: 100px 0; }
@@ -967,6 +1060,7 @@ ul{ list-style:none; margin:0; padding:0; }
   .services-grid{ grid-template-columns: repeat(2, 1fr); }
   .guarantees-grid{ grid-template-columns: repeat(2, 1fr); }
   .core-services-grid{ grid-template-columns: repeat(2, 1fr); }
+  .testimonials-grid{ grid-template-columns: 1fr; max-width: 480px; }
 
 
   .hours-inner{ grid-template-columns: 1fr; gap: 56px; }
@@ -981,6 +1075,7 @@ ul{ list-style:none; margin:0; padding:0; }
   .core-services-grid{ grid-template-columns: 1fr; }
   .core-services{ padding: 60px 0; }
   .core-service-card{ padding: 32px 24px 28px; }
+  .testimonials{ padding: 60px 0; }
   .footer-inner{ grid-template-columns: 1fr; gap: 36px; }
   .gallery-item{ width: 220px; }
 }
@@ -989,5 +1084,141 @@ ul{ list-style:none; margin:0; padding:0; }
 @media (max-width: 480px){
   .container{ padding: 0 20px; }
   .hero{ padding-top: calc(var(--header-h) + 40px); }
+}
+
+/* ==========================================================
+   Floating Google Review
+   ========================================================== */
+.google-review-float{
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 300;
+  width: 268px;
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(10,15,63,0.18);
+  padding: 14px 16px 14px;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.google-review-float.is-hidden{
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+}
+.grf-close{
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: #fff;
+  border: none;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  z-index: 1;
+}
+.grf-head{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.grf-icon{ width: 22px; height: 22px; flex-shrink: 0; }
+.grf-icon svg{ width:100%; height:100%; }
+.grf-rating{ display:flex; flex-direction:column; gap:1px; }
+.grf-stars{ color:#F5A623; font-size:11px; letter-spacing:1px; }
+.grf-text{ font-size:11.5px; color: var(--color-ink); font-weight:500; white-space:nowrap; }
+
+.grf-quote{
+  border-top: 1px solid var(--color-line);
+  padding-top: 10px;
+  margin-bottom: 10px;
+  min-height: 96px;
+}
+.grf-quote-stars{
+  margin: 0 0 6px;
+  color:#F5A623;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.grf-quote-text{
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--color-ink);
+}
+.grf-quote-author{
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--color-ink-soft);
+}
+.grf-quote-author::before{ content: '— '; }
+
+.grf-dots{
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.grf-dot{
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: var(--color-line);
+  cursor: pointer;
+}
+.grf-dot.is-active{ background: var(--color-brick); }
+
+.grf-link{
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-brick);
+}
+
+/* ==========================================================
+   Floating Social Buttons (WhatsApp / Facebook)
+   ========================================================== */
+.social-float-group{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 310;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.social-float{
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease;
+}
+.social-float:hover{ transform: scale(1.08); }
+.social-float svg{ width: 28px; height: 28px; }
+.whatsapp-float{ background: #25D366; box-shadow: 0 8px 24px rgba(37,211,102,0.4); }
+.fb-float{ background: #1877F2; box-shadow: 0 8px 24px rgba(24,119,242,0.4); }
+
+@media (max-width: 960px){
+  .lang-switch{ order: 3; }
+}
+
+@media (max-width:560px){
+  .google-review-float{ left:12px; right:82px; bottom:12px; width:auto; padding:12px 14px; }
+  .social-float-group{ right:16px; bottom:16px; gap:8px; }
+  .social-float{ width:48px; height:48px; }
+  .social-float svg{ width:24px; height:24px; }
 }
 

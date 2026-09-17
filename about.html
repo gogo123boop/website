@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-Hans"
+      data-title-en="About ZenCare - ZenCare TCM"
+      data-desc-en="Learn about ZenCare TCM's brand story, mission and vision. Harmonize Body &amp; Mind, ZenCare by Your Side.">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>探索濟明 - Zencare TCM 济明中医</title>
+<title>探索濟明 - ZenCare TCM 济明中医</title>
 <meta name="description" content="了解济明中医的品牌故事、愿景与使命。调和身心，济明相伴。">
+<link rel="canonical" href="https://zencaretcm.com/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ZenCare TCM 济明中医">
+<meta property="og:title" content="探索濟明 - ZenCare TCM 济明中医">
+<meta property="og:description" content="了解济明中医的品牌故事、愿景与使命。调和身心，济明相伴。">
+<meta property="og:url" content="https://zencaretcm.com/about.html">
+<meta property="og:image" content="https://zencaretcm.com/images/aboutzencare.jpeg">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="探索濟明 - ZenCare TCM 济明中医">
+<meta name="twitter:description" content="了解济明中医的品牌故事、愿景与使命。调和身心，济明相伴。">
+<meta name="twitter:image" content="https://zencaretcm.com/images/aboutzencare.jpeg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -64,6 +80,11 @@
   border-left: 2px solid rgba(255,255,255,0.2);
   padding-left: 16px;
 }
+.about-hero .hero-left[data-i18n-en]{
+  writing-mode: horizontal-tb;
+  border-left: none;
+  padding-left: 0;
+}
 /* 右侧竖排文字 - 调和身心 济明相伴 */
 .about-hero .hero-right {
   writing-mode: vertical-rl;
@@ -77,6 +98,14 @@
   padding: 0 10px;
   border-right: 2px solid rgba(255,255,255,0.15);
   padding-right: 16px;
+}
+.about-hero .hero-right[data-i18n-en]{
+  writing-mode: horizontal-tb;
+  border-right: none;
+  padding-right: 0;
+  text-align: right;
+  font-size: 16px;
+  letter-spacing: 0.06em;
 }
 /* 中间装饰线 */
 .about-hero .hero-divider {
@@ -189,6 +218,9 @@
 }
 .brand-story .letter-body p:last-child {
   margin-bottom: 0;
+}
+.brand-story .letter-body[data-i18n-en] p{
+  text-indent: 0;
 }
 /* 落款 */
 
@@ -392,6 +424,52 @@
 }
 
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MedicalClinic",
+  "name": "ZenCare TCM 济明中医",
+  "image": "https://zencaretcm.com/images/aboutzencare.jpeg",
+  "url": "https://zencaretcm.com/",
+  "telephone": "+60111074210",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "13, Jalan Perdagangan 4, Pusat Perdagangan Bukit Gambir",
+    "addressLocality": "Bukit Gambir",
+    "addressRegion": "Johor",
+    "postalCode": "84800",
+    "addressCountry": "MY"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 2.214636497765803,
+    "longitude": 102.65730857458895
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Monday",
+      "opens": "09:30",
+      "closes": "13:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "09:30",
+      "closes": "17:30"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "44"
+  },
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61554318343053"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -399,24 +477,49 @@
 <header class="site-header" id="header">
   <div class="container header-inner">
     <a href="index.html" class="logo">
-      <img src="images/logo-full.png" alt="Zencare TCM 济明中医" class="logo-img">
+      <img src="images/logo-full.png" alt="ZenCare TCM 济明中医" class="logo-img">
     </a>
     <nav class="main-nav" id="mainNav">
-      <a href="index.html#hero">首頁</a>
-      <a href="about.html">探索濟明</a>
-      <a href="doctors.html">認識醫師</a>
+      <a href="index.html#hero" data-i18n-zh>首頁</a>
+      <a href="index.html#hero" data-i18n-en hidden>Home</a>
+
+      <a href="about.html" data-i18n-zh>探索濟明</a>
+      <a href="about.html" data-i18n-en hidden>About Us</a>
+
+      <a href="doctors.html" data-i18n-zh>認識醫師</a>
+      <a href="doctors.html" data-i18n-en hidden>Our Practitioners</a>
+
       <div class="nav-dropdown">
-        <a href="javascript:void(0)">治療項目</a>
+        <a href="javascript:void(0)" data-i18n-zh>治療項目</a>
+        <a href="javascript:void(0)" data-i18n-en hidden>Treatments</a>
         <div class="nav-dropdown-menu">
-          <a href="acupuncture.html">针灸正骨伤科</a>
-          <a href="internal.html">内科体质调理</a>
-          <a href="gynecology.html">妇儿科</a>
+          <a href="acupuncture.html" data-i18n-zh>针灸正骨伤科</a>
+          <a href="acupuncture.html" data-i18n-en hidden>Acupuncture &amp; Orthopedics</a>
+
+          <a href="internal.html" data-i18n-zh>内科体质调理</a>
+          <a href="internal.html" data-i18n-en hidden>Internal Medicine</a>
+
+          <a href="gynecology.html" data-i18n-zh>妇儿科</a>
+          <a href="gynecology.html" data-i18n-en hidden>Gynecology &amp; Pediatrics</a>
         </div>
       </div>
-      <a href="index.html#hours">門診時間</a>
-      <a href="index.html#contact">聯絡我們</a>
+
+      <a href="index.html#hours" data-i18n-zh>門診時間</a>
+      <a href="index.html#hours" data-i18n-en hidden>Hours</a>
+
+      <a href="index.html#contact" data-i18n-zh>聯絡我們</a>
+      <a href="index.html#contact" data-i18n-en hidden>Contact</a>
     </nav>
-    <a href="https://wa.link/9sgf1u" class="btn btn-primary header-cta" target="_blank">線上預約</a>
+
+    <div class="lang-switch" id="langSwitch" role="group" aria-label="切换语言 / Language">
+      <button type="button" class="lang-btn" data-lang-btn="zh" aria-pressed="true">中文</button>
+      <span class="lang-sep" aria-hidden="true">/</span>
+      <button type="button" class="lang-btn" data-lang-btn="en" aria-pressed="false">EN</button>
+    </div>
+
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary header-cta" target="_blank">
+      <span data-i18n-zh>線上預約</span><span data-i18n-en hidden>Book Now</span>
+    </a>
     <button class="nav-toggle" id="navToggle" aria-label="开启选单" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -427,18 +530,22 @@
 <section class="about-hero">
   <img src="images/aboutzencare.jpeg" alt="关于济明" class="hero-bg">
   <div class="hero-text">
-    <div class="hero-left">关于济明</div>
+    <div class="hero-left" data-i18n-zh>关于济明</div>
+    <div class="hero-left" data-i18n-en hidden>About ZenCare</div>
     <div class="hero-divider"></div>
-    <div class="hero-right">调和身心<br>济明相伴</div>
+    <div class="hero-right" data-i18n-zh>调和身心<br>济明相伴</div>
+    <div class="hero-right" data-i18n-en hidden>Harmonize Body &amp; Mind<br>ZenCare by Your Side</div>
   </div>
 </section>
 
 <!-- ========== 面包屑 ========== -->
 <div class="container">
   <div class="breadcrumb">
-    <a href="index.html">首頁</a>
+    <a href="index.html" data-i18n-zh>首頁</a>
+    <a href="index.html" data-i18n-en hidden>Home</a>
     <span>/</span>
-    <span>探索濟明</span>
+    <span data-i18n-zh>探索濟明</span>
+    <span data-i18n-en hidden>About Us</span>
   </div>
 </div>
 
@@ -451,15 +558,18 @@
 
       <!-- 信头 -->
       <div class="letter-header">
-        <p class="eyebrow">— 致 每一位信赖济明的您 —</p>
-        <h2>一封来自济明团队的信</h2>
+        <p class="eyebrow" data-i18n-zh>— 致 每一位信赖济明的您 —</p>
+        <p class="eyebrow" data-i18n-en hidden>— To Every Patient Who Trusts ZenCare —</p>
+        <h2 data-i18n-zh>一封来自济明团队的信</h2>
+        <h2 data-i18n-en hidden>A Letter From the ZenCare Team</h2>
       </div>
 
       <!-- 称呼 -->
-      <div class="letter-greeting">亲爱的朋友，您好：</div>
+      <div class="letter-greeting" data-i18n-zh>亲爱的朋友，您好：</div>
+      <div class="letter-greeting" data-i18n-en hidden>Dear Friend,</div>
 
       <!-- 正文 -->
-      <div class="letter-body">
+      <div class="letter-body" data-i18n-zh>
         <p>见字如面。</p>
         <p>
           常有朋友问我，「济明」二字有何深意？其实，"济"是渡人以善，"明"是察病于微。这不仅是一个名字，更是我们心底对传统中医智慧的敬意，以及对你健康的挂念。
@@ -478,14 +588,35 @@
         </p>
         <p>祝 喜乐，安康。</p>
       </div>
+      <div class="letter-body" data-i18n-en hidden>
+        <p>It feels good to write to you, as if we were speaking face to face.</p>
+        <p>
+          Friends often ask what "ZenCare" truly means. "Zen" is to help others with kindness; "Care" is to see illness clearly, even in its earliest signs. It is not just a name — it reflects our deep respect for the wisdom of traditional Chinese medicine, and our genuine concern for your health.
+        </p>
+        <p>
+          In fast-paced Malaysia, we've seen that recurring inflammation and discomfort often trace back to an imbalance in digestion and internal qi and blood. That's why ZenCare has always believed in "treating the person, not just the illness." Rather than simply masking surface symptoms, we take a holistic approach — caring for the root cause and awakening your body's own capacity to heal.
+        </p>
+        <p>
+          In what feels like the blink of an eye, we've walked alongside and cared for over ten thousand patients. Every diagnosis, every prescription we consider carefully — each one is our purest commitment to compassionate medicine.
+        </p>
+        <p>
+          We know that the moment you walk through our doors, you place an invaluable trust in us. In return, we promise you this: our fees are always transparent, with no hidden charges; we use 100% natural herbal medicine, free of steroids or western drug additives; and we strictly enforce sterilization, using single-use needles and sheets, to give you the safest and cleanest environment for your care.
+        </p>
+        <p>
+          No matter how busy life gets, ZenCare TCM will always be here — with professionalism and warmth, as the health partner you can rely on.
+        </p>
+        <p>With joy and good health,</p>
+      </div>
 
 
 
 
       <!-- 落款 -->
       <div class="letter-signoff">
-        <div class="signoff-line1">济明中医 全体团队 敬上</div>
-        <div class="signoff-line2">Zencare TCM · 调和身心，济明相伴</div>
+        <div class="signoff-line1" data-i18n-zh>济明中医 全体团队 敬上</div>
+        <div class="signoff-line1" data-i18n-en hidden>With Sincere Regards,<br>The ZenCare TCM Team</div>
+        <div class="signoff-line2" data-i18n-zh>ZenCare TCM · 调和身心，济明相伴</div>
+        <div class="signoff-line2" data-i18n-en hidden>ZenCare TCM · Harmonize Body &amp; Mind</div>
       </div>
     </div>
   </div>
@@ -505,9 +636,11 @@
             <circle cx="32" cy="32" r="2" fill="currentColor"/>
           </svg>
         </div>
-        <h3>使命</h3>
-        <p class="phil-en">Mission</p>
-        <p>以传统中医辨证为本，结合现代医学知识，为每一位患者提供专业、安全、有效的诊疗服务，守护社区健康。</p>
+        <h3 data-i18n-zh>使命</h3>
+        <h3 data-i18n-en hidden>Mission</h3>
+        <p class="phil-en" data-i18n-zh>Mission</p>
+        <p data-i18n-zh>以传统中医辨证为本，结合现代医学知识，为每一位患者提供专业、安全、有效的诊疗服务，守护社区健康。</p>
+        <p data-i18n-en hidden>Rooted in traditional TCM diagnosis and enriched with modern medical knowledge, we provide professional, safe and effective care for every patient — safeguarding the health of our community.</p>
       </div>
 
       <div class="philosophy-card">
@@ -518,9 +651,11 @@
             <circle cx="32" cy="32" r="2" fill="currentColor"/>
           </svg>
         </div>
-        <h3>愿景</h3>
-        <p class="phil-en">Vision</p>
-        <p>成为马来西亚最受信赖的中医诊疗品牌，让更多人受益于传统中医的智慧，实现身心的全面健康。</p>
+        <h3 data-i18n-zh>愿景</h3>
+        <h3 data-i18n-en hidden>Vision</h3>
+        <p class="phil-en" data-i18n-zh>Vision</p>
+        <p data-i18n-zh>成为马来西亚最受信赖的中医诊疗品牌，让更多人受益于传统中医的智慧，实现身心的全面健康。</p>
+        <p data-i18n-en hidden>To become Malaysia's most trusted name in Traditional Chinese Medicine, so more people can benefit from its wisdom and achieve complete wellness in body and mind.</p>
       </div>
 
       <div class="philosophy-card">
@@ -533,9 +668,11 @@
             <path d="M22 54h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <h3>价值观</h3>
-        <p class="phil-en">Values</p>
-        <p>医者仁心、辨证求精、诚信为本、患者至上。以仁心待人，以精术治病，以诚信立身。</p>
+        <h3 data-i18n-zh>价值观</h3>
+        <h3 data-i18n-en hidden>Values</h3>
+        <p class="phil-en" data-i18n-zh>Values</p>
+        <p data-i18n-zh>医者仁心、辨证求精、诚信为本、患者至上。以仁心待人，以精术治病，以诚信立身。</p>
+        <p data-i18n-en hidden>Compassion, precision, integrity, and patients first. We treat with kindness, heal with skill, and stand on trust.</p>
       </div>
 
 
@@ -549,36 +686,45 @@
 <section class="brand-features">
   <div class="container features-inner">
     <p class="eyebrow">WHY CHOOSE US</p>
-    <h2 class="section-title">为什么选择济明</h2>
+    <h2 class="section-title" data-i18n-zh>为什么选择济明</h2>
+    <h2 class="section-title" data-i18n-en hidden>Why Choose ZenCare</h2>
     <div class="title-divider"></div>
 
     <div class="features-grid">
       <div class="feature-card">
         <span class="feature-num">01</span>
         <div class="feature-text">
-          <h4>辨证论治 · 个性化方案</h4>
-          <p>坚持望闻问切四诊合参，从整体出发找出病根，根据每位患者的体质与生活习惯，量身定制最合适的调理方案。</p>
+          <h4 data-i18n-zh>辨证论治 · 个性化方案</h4>
+          <h4 data-i18n-en hidden>Personalized TCM Diagnosis</h4>
+          <p data-i18n-zh>坚持望闻问切四诊合参，从整体出发找出病根，根据每位患者的体质与生活习惯，量身定制最合适的调理方案。</p>
+          <p data-i18n-en hidden>Using the four diagnostic methods — observation, listening, inquiry and pulse-taking — we identify the root cause holistically and tailor a treatment plan to each patient's constitution and lifestyle.</p>
         </div>
       </div>
       <div class="feature-card">
         <span class="feature-num">02</span>
         <div class="feature-text">
-          <h4>专业医师团队</h4>
-          <p>医师毕业于中国中医院校，同时拥有马来西亚卫生部行医执照，拥有十余年临床经验，兼具传统底蕴与现代视野。</p>
+          <h4 data-i18n-zh>专业医师团队</h4>
+          <h4 data-i18n-en hidden>Professional Practitioner Team</h4>
+          <p data-i18n-zh>医师毕业于中国中医院校，同时拥有马来西亚卫生部行医执照，拥有十余年临床经验，兼具传统底蕴与现代视野。</p>
+          <p data-i18n-en hidden>Our practitioners are graduates of accredited TCM institutions in China and hold practicing licenses from Malaysia's Ministry of Health, bringing over a decade of clinical experience with both traditional depth and a modern perspective.</p>
         </div>
       </div>
       <div class="feature-card">
         <span class="feature-num">03</span>
         <div class="feature-text">
-          <h4>纯天然草药 · 费用透明</h4>
-          <p>严格把关药材品质，100%使用纯天然草药，不含类固醇或西药添加物。所有费用公开透明，绝无隐藏收费。</p>
+          <h4 data-i18n-zh>纯天然草药 · 费用透明</h4>
+          <h4 data-i18n-en hidden>Natural Herbs, Transparent Pricing</h4>
+          <p data-i18n-zh>严格把关药材品质，100%使用纯天然草药，不含类固醇或西药添加物。所有费用公开透明，绝无隐藏收费。</p>
+          <p data-i18n-en hidden>We strictly control herb quality, using 100% natural herbal medicine with no steroids or western drug additives. All fees are transparent, with absolutely no hidden charges.</p>
         </div>
       </div>
       <div class="feature-card">
         <span class="feature-num">04</span>
         <div class="feature-text">
-          <h4>就诊环境安全卫生</h4>
-          <p>每次诊疗使用一次性床单与一次性针具，严格消毒流程，提供安全、舒适、干净的就诊环境。</p>
+          <h4 data-i18n-zh>就诊环境安全卫生</h4>
+          <h4 data-i18n-en hidden>A Safe, Hygienic Clinic</h4>
+          <p data-i18n-zh>每次诊疗使用一次性床单与一次性针具，严格消毒流程，提供安全、舒适、干净的就诊环境。</p>
+          <p data-i18n-en hidden>Single-use sheets and needles for every session, with strict sterilization protocols — a safe, comfortable and clean clinical environment.</p>
         </div>
       </div>
     </div>
@@ -590,10 +736,15 @@
 <!-- ========== CTA ========== -->
 <section class="about-cta">
   <div class="container">
-    <p class="eyebrow">预约门诊</p>
-    <h2 class="section-title">即刻开始您的健康之旅</h2>
-    <p>欢迎预约看诊，让济明中医团队为您提供专业的诊疗服务。</p>
-    <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">線上預約</a>
+    <p class="eyebrow" data-i18n-zh>预约门诊</p>
+    <p class="eyebrow" data-i18n-en hidden>Book an Appointment</p>
+    <h2 class="section-title" data-i18n-zh>即刻开始您的健康之旅</h2>
+    <h2 class="section-title" data-i18n-en hidden>Begin Your Wellness Journey Today</h2>
+    <p data-i18n-zh>欢迎预约看诊，让济明中医团队为您提供专业的诊疗服务。</p>
+    <p data-i18n-en hidden>Book your visit and let the ZenCare TCM team provide you with professional, personalized care.</p>
+    <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">
+      <span data-i18n-zh>線上預約</span><span data-i18n-en hidden>Book Now</span>
+    </a>
   </div>
 </section>
 
@@ -604,37 +755,86 @@
       <img src="images/logo-seal.png" alt="济明中医 印" class="footer-seal">
       <span class="logo-cn footer-logo-cn">济明中医</span>
       <span class="logo-en footer-logo-en">ZENCARE TCM</span>
-      <p class="footer-tagline">调和身心，济明相伴。<br><em>Pusat Perubatan Tradisional Cina</em></p>
+      <p class="footer-tagline" data-i18n-zh>调和身心，济明相伴。<br><em>Pusat Perubatan Tradisional Cina</em></p>
+      <p class="footer-tagline" data-i18n-en hidden>Harmonize Body &amp; Mind, ZenCare by Your Side.<br><em>Pusat Perubatan Tradisional Cina</em></p>
       <div class="footer-social">
-        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.4l.6-3H14v-1.5c0-.6.4-1.5 1-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
+        <a href="https://www.facebook.com/profile.php?id=61554318343053" target="_blank" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.4l.6-3H14v-1.5c0-.6.4-1.5 1-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></a>
         <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="4" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.3"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor"/></svg></a>
         <a href="https://wa.me/60111074210" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.2-.1.3 0 .5.4.7 1.4 1.7 2.1 2.1.2.1.3.1.5 0l.6-.5c.1-.1.3-.2.5-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7-1 .4-2.3 0-3.9-1.2-1.3-1-2.2-2.1-2.7-3.1-.5-1-.5-2 0-2.8z" fill="currentColor"/></svg></a>
       </div>
     </div>
     <div class="footer-col">
-      <h4>快速链接</h4>
-      <a href="about.html">探索濟明</a>
-      <a href="doctors.html">認識醫師</a>
-      <a href="acupuncture.html">治療項目</a>
-      <a href="index.html#hours">門診時間</a>
+      <h4 data-i18n-zh>快速链接</h4>
+      <h4 data-i18n-en hidden>Quick Links</h4>
+      <a href="about.html" data-i18n-zh>探索濟明</a>
+      <a href="about.html" data-i18n-en hidden>About Us</a>
+      <a href="doctors.html" data-i18n-zh>認識醫師</a>
+      <a href="doctors.html" data-i18n-en hidden>Our Practitioners</a>
+      <a href="acupuncture.html" data-i18n-zh>治療項目</a>
+      <a href="acupuncture.html" data-i18n-en hidden>Treatments</a>
+      <a href="index.html#hours" data-i18n-zh>門診時間</a>
+      <a href="index.html#hours" data-i18n-en hidden>Hours</a>
     </div>
     <div class="footer-col">
-      <h4>联络资讯</h4>
+      <h4 data-i18n-zh>联络资讯</h4>
+      <h4 data-i18n-en hidden>Contact Info</h4>
       <p>13, Jalan Perdagangan 4, Pusat Perdagangan Bukit Gambir, 84800 Tangkak, Johor</p>
       <p><a href="tel:+60111074210">+60 11-1074 2100</a></p>
-      <p>周一 9:30AM–1:00PM｜周三至周日 9:30AM–5:30PM｜周二休诊</p>
+      <p data-i18n-zh>周一 9:30AM–1:00PM｜周三至周日 9:30AM–5:30PM｜周二休诊</p>
+      <p data-i18n-en hidden>Mon 9:30AM–1:00PM｜Wed–Sun 9:30AM–5:30PM｜Closed Tue</p>
     </div>
     <div class="footer-col">
-      <h4>線上預約</h4>
-      <p class="footer-cta-text">预约门诊，即刻安排您的健康调理。</p>
-      <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">立即预约</a>
+      <h4 data-i18n-zh>線上預約</h4>
+      <h4 data-i18n-en hidden>Book Online</h4>
+      <p class="footer-cta-text" data-i18n-zh>预约门诊，即刻安排您的健康调理。</p>
+      <p class="footer-cta-text" data-i18n-en hidden>Book your appointment today and start your journey to better health.</p>
+      <a href="https://wa.link/9sgf1u" class="btn btn-primary" target="_blank">
+        <span data-i18n-zh>立即预约</span><span data-i18n-en hidden>Book Now</span>
+      </a>
     </div>
   </div>
   <div class="footer-bottom container">
-    <p>© 2026 Zencare TCM 济明中医. All Rights Reserved.</p>
+    <p>© 2026 ZenCare TCM 济明中医. All Rights Reserved.</p>
     <p class="footer-reg">ZENCARE TCM ENTERPRISE 202403064045 (MA0313032-A)</p>
   </div>
 </footer>
+
+<!-- ========== Floating Social Buttons ========== -->
+<div class="social-float-group">
+  <a href="https://www.facebook.com/profile.php?id=61554318343053" target="_blank" rel="noopener" class="social-float fb-float" aria-label="Facebook">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.4l.6-3H14v-1.5c0-.6.4-1.5 1-1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+  </a>
+  <a href="https://wa.me/60111074210" target="_blank" rel="noopener" class="social-float whatsapp-float" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 00-7.7 13.6L3 21l4.6-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M8.5 8.8c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.2 0 .4-.1.5l-.5.6c-.1.2-.1.3 0 .5.4.7 1.4 1.7 2.1 2.1.2.1.3.1.5 0l.6-.5c.1-.1.3-.2.5-.1l1.7.7c.3.1.4.3.4.5v.5c0 .3 0 .5-.5.7-1 .4-2.3 0-3.9-1.2-1.3-1-2.2-2.1-2.7-3.1-.5-1-.5-2 0-2.8z" fill="currentColor"/></svg>
+  </a>
+</div>
+
+<!-- ========== Floating Google Review ========== -->
+<div class="google-review-float" id="googleReviewFloat">
+  <button type="button" class="grf-close" id="grfClose" aria-label="Close">×</button>
+
+  <div class="grf-head">
+    <span class="grf-icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.5 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.7 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.5 5.1 29.6 3 24 3 16.1 3 9.2 7.4 6.3 14.7z"/><path fill="#4CAF50" d="M24 45c5.5 0 10.4-2.1 14.2-5.6l-6.6-5.6C29.6 35.4 27 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.6 5.1C9.1 40.5 16 45 24 45z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.3-4.1 5.8l6.6 5.6C41.9 36.6 45 30.8 45 24c0-1.2-.1-2.4-.4-3.5z"/></svg>
+    </span>
+    <span class="grf-rating">
+      <span class="grf-stars" aria-hidden="true">★★★★★</span>
+      <span class="grf-text" data-i18n-zh>5.0 · 44 则 Google 评价</span>
+      <span class="grf-text" data-i18n-en hidden>5.0 · 44 Google Reviews</span>
+    </span>
+  </div>
+
+  <div class="grf-quote">
+    <p class="grf-quote-stars" aria-hidden="true">★★★★★</p>
+    <p class="grf-quote-text" id="grfQuoteText"></p>
+    <p class="grf-quote-author" id="grfQuoteAuthor"></p>
+  </div>
+
+  <div class="grf-dots" id="grfDots" role="tablist" aria-label="评价切换"></div>
+
+  <a href="https://search.google.com/local/reviews?placeid=ChIJVxS-WevP0R0ZGe6c3a2drd0" target="_blank" rel="noopener" class="grf-link" data-i18n-zh>查看全部评价 →</a>
+  <a href="https://search.google.com/local/reviews?placeid=ChIJVxS-WevP0R0ZGe6c3a2drd0" target="_blank" rel="noopener" class="grf-link" data-i18n-en hidden>See all reviews →</a>
+</div>
 
 <script src="script.js"></script>
 </body>
