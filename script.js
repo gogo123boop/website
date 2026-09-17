@@ -8,6 +8,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = mainNav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', String(isOpen));
     });
+
+    // Close the mobile menu after tapping an actual nav link, so it doesn't
+    // stay open and cover the page after jumping to a section/page.
+    mainNav.querySelectorAll('a').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href && href !== 'javascript:void(0)') {
+        link.addEventListener('click', () => {
+          mainNav.classList.remove('is-open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      }
+    });
   }
 
   // ---------- Language switch (中文 / EN) ----------
