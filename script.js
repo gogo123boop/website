@@ -98,6 +98,16 @@ document.addEventListener('DOMContentLoaded', () => {
       name: 'Muhibah',
       zh: '全家人都在这里看诊，效果很好，医师和员工都非常棒。',
       en: 'My whole family has been treated here — very effective, and the doctor and staff are excellent.'
+    },
+    {
+      name: 'Huey Xie',
+      zh: '我和爸爸都在这里接受了很好的治疗，我原本颈椎有问题、左手发麻，吴医师大大改善了我的状况，非常专业的中医诊所！',
+      en: 'Me and my dad received well treatment here, I have neck spine problem and numb of my left hand. Dr Goh helped relieve my neck spine problem a lot. Good TCM clinic, doctor is very professional.'
+    },
+    {
+      name: 'Leo',
+      zh: 'John医师和Ashley医师的医疗服务非常出色！之前看了好几位中医师效果都不明显，来到这里后困扰已久的腰痛终于得到改善，非常感谢他们的专业治疗！',
+      en: "Excellent medical service by Dr. John and Dr. Ashley! They successfully helped resolve my backache after I had visited several TCM practitioners without much improvement. I'm very grateful for their professional treatment."
     }
   ];
 
