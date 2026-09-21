@@ -857,14 +857,27 @@ html[data-lang="en"] .hero-title{ font-size: clamp(30px, 3.6vw, 46px); }
 }
 .testimonials-rating .rating-stars{ color: var(--color-gold); font-size: 14px; letter-spacing: 1px; }
 
-.testimonials-grid{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1000px;
+.testimonials-carousel{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 1080px;
   margin: 0 auto;
 }
+.testimonials-track{
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  flex: 1;
+  /* hide scrollbar since the arrow buttons drive navigation */
+  scrollbar-width: none;
+}
+.testimonials-track::-webkit-scrollbar{ display: none; }
 .testimonial-card{
+  flex: 0 0 calc((100% - 48px) / 3);
+  scroll-snap-align: start;
   background: var(--color-paper);
   border: 1px solid var(--color-line);
   padding: 32px 28px;
@@ -874,6 +887,23 @@ html[data-lang="en"] .hero-title{ font-size: clamp(30px, 3.6vw, 46px); }
   border-color: var(--color-brick);
   box-shadow: 0 10px 28px rgba(118,21,24,0.08);
   transform: translateY(-3px);
+}
+.testimonials-nav{
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.testimonials-nav:hover{
+  border-color: var(--color-brick);
+  color: var(--color-brick);
 }
 .testimonial-stars{
   margin: 0 0 14px;
@@ -1095,7 +1125,7 @@ html[data-lang="en"] .hero-title{ font-size: clamp(30px, 3.6vw, 46px); }
   .services-grid{ grid-template-columns: repeat(2, 1fr); }
   .guarantees-grid{ grid-template-columns: repeat(2, 1fr); }
   .core-services-grid{ grid-template-columns: repeat(2, 1fr); }
-  .testimonials-grid{ grid-template-columns: 1fr; max-width: 480px; }
+  .testimonial-card{ flex: 0 0 calc((100% - 24px) / 2); }
 
 
   .hours-inner{ grid-template-columns: 1fr; gap: 56px; }
@@ -1111,6 +1141,8 @@ html[data-lang="en"] .hero-title{ font-size: clamp(30px, 3.6vw, 46px); }
   .core-services{ padding: 60px 0; }
   .core-service-card{ padding: 32px 24px 28px; }
   .testimonials{ padding: 60px 0; }
+  .testimonial-card{ flex: 0 0 100%; padding: 24px 20px; }
+  .testimonials-nav{ width: 34px; height: 34px; font-size: 17px; }
   .footer-inner{ grid-template-columns: 1fr; gap: 36px; }
   .gallery-item{ width: 220px; }
 }

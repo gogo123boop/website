@@ -165,4 +165,21 @@ document.addEventListener('DOMContentLoaded', () => {
       try { sessionStorage.setItem('zc_grf_dismissed', '1'); } catch (e) {}
     });
   }
+
+  // ---------- Testimonials carousel ----------
+  const tTrack = document.getElementById('testimonialsTrack');
+  const tPrev = document.getElementById('testimonialsPrev');
+  const tNext = document.getElementById('testimonialsNext');
+  if (tTrack && tPrev && tNext) {
+    const scrollByCard = (dir) => {
+      const card = tTrack.querySelector('.testimonial-card');
+      if (!card) return;
+      const style = getComputedStyle(tTrack);
+      const gap = parseFloat(style.columnGap || style.gap || '24');
+      const amount = (card.getBoundingClientRect().width + gap) * dir;
+      tTrack.scrollBy({ left: amount, behavior: 'smooth' });
+    };
+    tPrev.addEventListener('click', () => scrollByCard(-1));
+    tNext.addEventListener('click', () => scrollByCard(1));
+  }
 });
